@@ -1,0 +1,33 @@
+phpcs:
+    standard: ./phpcs.xml
+    ignoreWarnings: true
+    reports:
+        cli:
+            - full
+        file:
+            checkstyle: checkstyle.xml
+phpmd:
+    standard: ./phpmd-ruleset.xml
+
+phpmetrics:
+    config: null
+
+phpstan:
+    level: 7
+    standard: ./phpstan-phpqa.neon
+
+phpunit:
+    binary: ../bin/simple-phpunit
+    config: null
+    reports:
+        file: []
+        coverage: [html]
+
+psalm:
+    config: ./psalm.xml
+    deadCode: false
+    threads: 1
+    showInfo: true
+
+extensions:
+    - php

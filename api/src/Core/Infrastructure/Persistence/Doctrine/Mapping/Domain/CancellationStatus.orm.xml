@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping
+	xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:gedmo="http://gediminasm.org/schemas/orm/doctrine-extensions-mapping"
+	xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+	<entity name="App\Core\Domain\Entity\CancellationStatus" table="cancellation_status">
+		<id name="id" type="integer" column="id">
+			<generator strategy="IDENTITY"/>
+		</id>
+		<field name="name" length="50"/>
+		<field name="description" />
+		<field name="createdAt" column="created_at" type="datetime">
+			<gedmo:timestampable on="create" />
+		</field>
+		<field name="updatedBy" column="updated_by" type="integer" />
+		<field name="isRequireComment" column="is_require_comment" type="boolean">
+			<options>
+				<option name="default">1</option>
+			</options>
+		</field>
+		<field name="isCancellation" column="is_cancellation" type="boolean">
+			<options>
+				<option name="default">1</option>
+			</options>
+		</field>
+	</entity>
+</doctrine-mapping>

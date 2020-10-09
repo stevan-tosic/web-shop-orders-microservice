@@ -1,0 +1,2 @@
+users:
+    resource: "../src/Core/Infrastructure/Routes/users.yaml"

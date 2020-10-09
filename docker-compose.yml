@@ -1,0 +1,113 @@
+version: '3.6'
+
+services:
+  # https://hub.docker.com/_/php/
+  php-platform:
+    environment:
+      - PHP_IDE_CONFIG=serverName=localhost
+    container_name: php
+    build:
+      context: ./api
+      dockerfile: docker/php/Dockerfile
+      cache_from:
+        - ./api/docker/php
+    depends_on:
+      - db
+    links:
+      - redis-client
+      - elasticsearch-platform
+      - mailcatcher
+    env_file:
+      - ./api/.env
+    volumes:
+      - ./api:/srv/api:rw,cached
+      - /usr/local/lib
+    networks:
+      - default
+
+  # https://hub.docker.com/_/nginx/
+  api:
+    container_name: nginx
+    build:
+      context: ./api
+      dockerfile: docker/nginx/Dockerfile
+      cache_from:
+        - ./api/docker/nginx
+    depends_on:
+      - php-platform
+    volumes:
+      - ./api/public:/srv/api/public:ro
+    ports:
+      - "12020:80"
+    expose:
+      - "8000"
+    networks:
+      - default
+
+  # https://hub.docker.com/_/postgres/
+  # soon v11 when dbal supports it: https://github.com/doctrine/dbal/releases
+  db:
+    image: postgres:10-alpine
+    container_name: db
+    environment:
+      - POSTGRES_DB=api
+      - POSTGRES_USER=api-platform
+      - POSTGRES_PASSWORD=!ChangeMe!
+    command: -p 5434
+    volumes:
+      - db-data:/var/lib/postgresql/data:rw
+    ports:
+      - "5434:5434"
+    networks:
+      - default
+
+  # https://hub.docker.com/_/redis/
+  redis-client:
+    image: redis:alpine
+    container_name: redis-client
+    command: redis-server --port 6382
+    ports:
+      - "6382:6382"
+    networks:
+      - default
+
+  # https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html
+  elasticsearch-platform:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.4.0
+    container_name: elasticsearch-platform
+    environment:
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - Des.scripting.exception_for_missing_value=true
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    volumes:
+      - esdata1:/usr/share/elasticsearch/data
+    ports:
+      - "9201:9201"
+    networks:
+      - default
+
+  # https://hub.docker.com/r/schickling/mailcatcher/
+  mailcatcher:
+    image: schickling/mailcatcher
+    container_name: mailcatcher
+    ports:
+      - "1026:1025" # changed to 1026 to avoid local instance of mailcatcher
+      - "1081:1080"
+
+networks:
+  default:
+    name: "test-network"
+
+volumes:
+  db-data: {}
+  pgadmin-data: {}
+  esdata1:
+    driver: local

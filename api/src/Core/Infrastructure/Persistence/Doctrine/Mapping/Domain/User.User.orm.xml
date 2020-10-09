@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping
+        xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:gedmo="http://gediminasm.org/schemas/orm/doctrine-extensions-mapping"
+        xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity name="App\Core\Domain\Entity\User\User" table="`user`">
+        <indexes>
+            <index columns="first_name"/>
+            <index columns="last_name"/>
+            <index columns="email"/>
+            <index columns="uuid"/>
+        </indexes>
+        <unique-constraints>
+            <unique-constraint name="email_UNIQUE" columns="email"/>
+            <unique-constraint name="uuid_UNIQUE" columns="uuid"/>
+        </unique-constraints>
+        <id name="id" type="integer" column="id">
+            <generator strategy="SEQUENCE" />
+            <sequence-generator sequence-name="user_seq" initial-value="350000" />
+        </id>
+        <field name="email" length="255" />
+        <field name="password" length="60" nullable="true" />
+        <field name="firstName" column="first_name" length="50" nullable="true" />
+        <field name="lastName" column="last_name" length="50" nullable="true" />
+        <field name="jobTitle" column="job_title" length="100" nullable="true" />
+        <field name="confirmationToken" column="confirmation_token" length="64" nullable="true" />
+        <field name="confirmationTokenIssueDate" column="confirmation_token_issue_date" type="datetime" nullable="true" />
+        <field name="confirmationTokenValid" column="confirmation_token_valid" type="boolean" nullable="true" />
+        <field name="enabled" type="boolean" nullable="true"/>
+        <field name="roles" type="array" nullable="true" />
+        <field name="created" type="datetime" nullable="true" >
+            <gedmo:timestampable on="create" />
+        </field>
+        <field name="modified" type="datetime" nullable="true" >
+            <gedmo:timestampable on="update" />
+        </field>
+        <field name="lastAccess" type="datetime" nullable="true" />
+        <field name="uuid" column="uuid" type="uuid" unique="true" nullable="true" />
+    </entity>
+</doctrine-mapping>

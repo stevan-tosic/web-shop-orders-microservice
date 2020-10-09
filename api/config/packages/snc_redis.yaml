@@ -1,0 +1,62 @@
+snc_redis:
+    clients:
+        default:
+            type: predis
+            alias: default
+            dsn: "%env(resolve:REDIS_URL)%"
+            logging: false
+            options:
+                prefix: "%env(resolve:APP_HOST)%_"
+        cache:
+            type: predis
+            logging: false
+            alias: cache
+            dsn: "%env(resolve:REDIS_URL)%"
+            options:
+                prefix: "%env(resolve:APP_HOST)%_"
+        session:
+            type: predis
+            alias: session
+            logging: false
+            dsn: "%env(resolve:REDIS_SESSION_URL)%"
+            options:
+                prefix: "%env(resolve:APP_HOST)%_"
+        doctrine_cache:
+            type: predis
+            alias: doctrine_cache
+            dsn: "%env(resolve:REDIS_URL)%"
+            options:
+                prefix: "%env(resolve:APP_HOST)%_"
+        monolog:
+            type: predis
+            alias: monolog
+            dsn: "%env(resolve:REDIS_URL)%"
+            logging: false
+            options:
+                connection_persistent: true
+                prefix: "%env(resolve:APP_HOST)%_"
+        profiler_storage:
+            type: predis
+            alias: profiler_storage
+            dsn: "%env(resolve:REDIS_URL)%"
+            logging: false
+            options:
+                prefix: "%env(resolve:APP_HOST)%_"
+    session:
+        client: session
+        prefix: SESSION
+        locking: false
+    profiler_storage:
+        client: profiler_storage
+        ttl: 3600
+    monolog:
+        client: monolog
+        key: monolog
+    doctrine:
+        metadata_cache:
+            client: doctrine_cache
+            entity_manager: default
+            document_manager: default
+        query_cache:
+            client: doctrine_cache
+            entity_manager: default

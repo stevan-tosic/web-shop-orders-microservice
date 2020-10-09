@@ -1,0 +1,47 @@
+.idea
+/api/public/.htaccess
+
+###> test and code quality reports ###
+/api/build
+/api/tests/reports/
+api/rulesets/.php_cs.cache
+###< test and code quality reports ###
+
+###> symfony/framework-bundle ###
+/api/.env
+/api/public/bundles/
+/api/var/
+/api/vendor/
+###< symfony/framework-bundle ###
+
+###> friendsofphp/php-cs-fixer ###
+/api/.php_cs
+/api/.php_cs.cache
+###< friendsofphp/php-cs-fixer ###
+
+###> symfony/phpunit-bridge ###
+/api/bin/.phpunit
+/api/phpunit.xml
+###< symfony/phpunit-bridge ###
+
+###> client - frontend ###
+/client/.eslintignore
+/client/node_modules/
+/client/.env
+/client/package-lock.json
+/client/build/.htaccess
+/client/.cache-loader/
+###< client - frontend ###
+
+# System files
+.DS_Store
+/api/tests/files/virus-sample
+
+# SSO keys
+/api/secrets/*
+/api/=var/
+/var/
+
+/api/public/export/*
+
+/releases

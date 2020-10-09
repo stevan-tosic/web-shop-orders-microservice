@@ -1,0 +1,10 @@
+resources:
+    App\Core\Domain\Entity\Host:
+        collectionOperations:
+        itemOperations:
+            get:
+                method: 'GET'
+                path: 'order/host/{id}'
+                controller: 'App\Core\Application\Action\GetHostAction'
+                defaults:
+                    _api_receive: false

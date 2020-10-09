@@ -1,0 +1,4 @@
+user_get:
+    path: api/user/{id}
+    controller: App\Core\Application\Action\UserAction
+    methods: GET

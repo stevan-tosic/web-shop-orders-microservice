@@ -1,0 +1,10 @@
+resources:
+    App\Core\Domain\Entity\Order\OrderLine:
+        collectionOperations:
+        itemOperations:
+            get:
+                method: 'GET'
+                path: 'order/line/{id}'
+                controller: 'App\Core\Application\Action\OrderLine\GetOrderLineAction'
+                defaults:
+                    _api_receive: false

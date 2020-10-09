@@ -1,0 +1,24 @@
+api_platform:
+    title: 'HappyShops - Task API'
+    description: 'Orders microservice prototype'
+    version: '1.0.0'
+
+    collection:
+        pagination:
+            enabled: false
+
+    mapping:
+        paths:
+            - '%kernel.project_dir%/src/Core/Infrastructure/Routes/order.yaml'
+            - '%kernel.project_dir%/src/Core/Infrastructure/Routes/orderLine.yaml'
+            - '%kernel.project_dir%/src/Core/Infrastructure/Routes/address.yaml'
+            - '%kernel.project_dir%/src/Core/Infrastructure/Routes/host.yaml'
+    formats:
+        json:
+            mime_types: [ 'application/json' ]
+        jsonld:
+            mime_types: [ 'application/ld+json' ]
+        html:
+            mime_types: [ 'text/html' ]
+    swagger:
+        versions: [2]

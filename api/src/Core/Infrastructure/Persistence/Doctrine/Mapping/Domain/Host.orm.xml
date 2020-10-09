@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping
+	xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+	<entity name="App\Core\Domain\Entity\Host" table="hosts">
+		<id name="id" type="integer" column="id">
+			<generator strategy="IDENTITY"/>
+		</id>
+		<field name="name" length="100"/>
+		<field name="description" length="100"/>
+		<field name="host" length="50"/>
+		<field name="shortName" column="short_name" length="50"/>
+		<many-to-one field="language" inversed-by="host" target-entity="App\Core\Domain\Entity\Language">
+			<join-columns>
+				<join-column name="language_id"/>
+			</join-columns>
+		</many-to-one>
+	</entity>
+</doctrine-mapping>

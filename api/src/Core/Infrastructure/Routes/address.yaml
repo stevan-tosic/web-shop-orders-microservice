@@ -1,0 +1,10 @@
+resources:
+    App\Core\Domain\Entity\Address:
+        collectionOperations:
+        itemOperations:
+            get:
+                method: 'GET'
+                path: 'address/{id}'
+                controller: 'App\Core\Application\Action\GetAddressAction'
+                defaults:
+                    _api_receive: false

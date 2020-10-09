@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping
+	xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:gedmo="http://gediminasm.org/schemas/orm/doctrine-extensions-mapping"
+	xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+	<entity name="App\Core\Domain\Entity\Address" table="address">
+		<id name="id" type="integer" column="id">
+			<generator strategy="IDENTITY"/>
+		</id>
+		<many-to-one field="title" inversed-by="address" target-entity="App\Core\Domain\Entity\Title">
+			<join-columns>
+				<join-column name="title_id"/>
+			</join-columns>
+		</many-to-one>
+		<field name="company" nullable="true" length="150"/>
+		<field name="lastName" column="last_name" length="50"/>
+		<field name="firstName" column="first_name" length="50"/>
+		<field name="email" length="50"/>
+		<field name="address1" length="150"/>
+		<field name="address2" nullable="true" length="150"/>
+		<field name="zip" length="10"/>
+		<field name="location" length="150"/>
+		<many-to-one field="country" inversed-by="address" target-entity="App\Core\Domain\Entity\Country">
+			<join-columns>
+				<join-column name="title_id"/>
+			</join-columns>
+		</many-to-one>
+		<field name="birthDate" column="birth_date" type="datetime"/>
+		<field name="registrationDate" column="registration_date" type="datetime">
+			<gedmo:timestampable on="create" />
+		</field>
+		<field name="iban" nullable="true" length="34"/>
+		<field name="uid" nullable="true" length="50"/>
+		<field name="poNumber" column="po_number" nullable="true" length="50"/>
+		<field name="costCenter" column="cost_center" nullable="true" length="50"/>
+		<field name="reference" nullable="true" length="50"/>
+		<field name="department" nullable="true" length="50"/>
+	</entity>
+</doctrine-mapping>

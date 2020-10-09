@@ -1,0 +1,132 @@
+App\Core\Domain\Entity\User\User:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields:
+                - email
+            message: email.unique
+            groups:
+                - create
+                - update
+    properties:
+        email:
+            - Type:
+                type: string
+            - NotNull:
+                message: notNullString
+                groups:
+                  - growth
+            - App\Core\Application\Validator\Constraints\Length:
+                max: 255
+                maxMessage: email.maxMessage
+                groups:
+                  - create
+                  - update
+            - App\Core\Application\Validator\Constraints\NotBlank:
+                message: notBlank
+                groups:
+                  - create
+                  - update
+                  - growth
+            - Email:
+                message: email.invalid
+                #checkMX: true
+                mode: strict
+                groups:
+                  - create
+                  - update
+                  - growth
+        plainPassword:
+            - Type:
+                type: string
+            - App\Core\Application\Validator\Constraints\NotBlank:
+                message: notBlank
+                groups:
+                    - create
+                    - new-password
+            - Rollerworks\Component\PasswordStrength\Validator\Constraints\PasswordStrength:
+                message: password.passwordStrength
+                minStrength: 4
+                groups:
+                    - Default
+                    - create
+                    - new-password
+            - App\Core\Application\Validator\Constraints\Length:
+                max: 60
+                maxMessage: password.maxMessage
+                min: 7
+                minMessage: password.minMessage
+        firstName:
+            - Type:
+                type: string
+            - NotNull:
+                message: notNullString
+                groups:
+                  - growth
+            - App\Core\Application\Validator\Constraints\NotBlank:
+                message: notBlank
+                groups:
+                  - create
+                  - update
+                  - growth
+            - App\Core\Application\Validator\Constraints\Length:
+                max: 50
+                maxMessage: firstName.maxMessage
+                groups:
+                  - create
+                  - update
+            - Regex:
+                pattern: "/^[a-z,.'\\s\\ćĆčČžŽšŠđĐàÀèÈéÉìÌòÒóÓùÙçÇ-]+$/i"
+                match: true
+                message: firstName.invalidCharacters
+                groups:
+                  - create
+                  - update
+        lastName:
+            - Type:
+                type: string
+            - NotNull:
+                message: notNullString
+                groups:
+                  - growth
+            - App\Core\Application\Validator\Constraints\NotBlank:
+                message: notBlank
+                groups:
+                  - create
+                  - update
+                  - growth
+            - App\Core\Application\Validator\Constraints\Length:
+                max: 50
+                maxMessage: lastName.maxMessage
+                groups:
+                  - create
+                  - update
+            - Regex:
+                pattern: "/^[a-z,.'\\s\\ćĆčČžŽšŠđĐàÀèÈéÉìÌòÒóÓùÙçÇ-]+$/i"
+                match: true
+                message: lastName.invalidCharacters
+                groups:
+                  - create
+                  - update
+        jobTitle:
+            - Type:
+                type: string
+            - App\Core\Application\Validator\Constraints\NotBlank:
+                message: notBlank
+                groups:
+                  - create
+                  - update
+            - App\Core\Application\Validator\Constraints\Length:
+                max: 100
+                maxMessage: jobTitle.maxMessage
+                groups:
+                  - create
+                  - update
+        roles:
+            - App\Core\Application\Validator\Constraints\UserRoles:
+                message: roles.invalidRoles
+                groups:
+                  - create
+        createCompanyPermission:
+            - Choice:
+                choices:  [1, 2, 3]
+                message:  createCompanyPermission.wrongValues

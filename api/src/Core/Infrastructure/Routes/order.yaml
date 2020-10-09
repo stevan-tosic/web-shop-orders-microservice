@@ -1,0 +1,223 @@
+resources:
+    App\Core\Domain\Entity\Order\Order:
+        collectionOperations:
+            create:
+                method: 'POST'
+                path: 'order'
+                controller: 'App\Core\Application\Action\Order\CreateOrderAction'
+                defaults:
+                    _api_receive: false
+                swagger_context:
+                    summary: "create order collection"
+                    description: >
+                        # create order collection
+                    parameters:
+                        -   in: body
+                            name: order
+                            type: object
+                            required: true
+                            description: Contents of Order
+                            example:
+                                total: 0
+                                isActive: true
+                                createdAt: '2020-10-09T00:44:09.059Z'
+                                billingStatus:
+                                    id: 1
+                                    name: string
+                                billingAddress:
+                                    id: 1
+                                    title:
+                                        id: 1
+                                        name: string
+                                    company: string
+                                    lastName: string
+                                    firstName: string
+                                    email: string
+                                    address1: string
+                                    address2: string
+                                    zip: string
+                                    location: string
+                                    country:
+                                        name: string
+                                        acronym: string
+                                        inCheckout: true
+                                        alpha3Code: string
+                                    birthDate: '2020-10-09T00:47:43.659Z'
+                                    registrationDate: '2020-10-09T00:47:43.659Z'
+                                    iban: string
+                                    uid: string
+                                    poNumber: string
+                                    costCenter: string
+                                    reference: string
+                                    department: string
+                                deliveryAddress:
+                                    id: 1
+                                    title:
+                                        name: string
+                                    company: string
+                                    lastName: string
+                                    firstName: string
+                                    email: string
+                                    address1: string
+                                    address2: string
+                                    zip: string
+                                    location: string
+                                    country:
+                                        name: string
+                                        acronym: string
+                                        inCheckout: true
+                                        alpha3Code: string
+                                    birthDate: '2020-10-09T00:47:43.659Z'
+                                    registrationDate: '2020-10-09T00:47:43.659Z'
+                                    iban: string
+                                    uid: string
+                                    poNumber: string
+                                    costCenter: string
+                                    reference: string
+                                    department: string
+                                host:
+                                    id: 1
+                                    name: string
+                                    description: string
+                                    host: string
+                                    shortName: string
+                                    language:
+                                        name: string
+                                        short: string
+                                        shortIso: string
+                                cancellationDate: '2020-10-09T00:44:09.059Z'
+                                orderLines:
+                                    -   price: 0
+                                        createdAt: '2020-10-09T00:56:59.494Z'
+                                        quantity: 0
+                                        tax:
+                                            id: 1
+                                            name: string
+                                            tax: 0
+                                            typeId: 0
+                                            expirationDate: '2020-10-09T00:56:59.494Z'
+                                            label: string
+                                        shippingStatus:
+                                            name: string
+                                        article:
+                                            id: 1
+                                            articleType:
+                                                id: 1
+                                                short: string
+                                                title: string
+                                            tax:
+                                                id: 1
+                                                name: string
+                                                tax: 0
+                                                typeId: 0
+                                                expirationDate: '2020-10-09T00:56:59.494Z'
+                                                label: string
+                                            creationDate: '2020-10-09T00:56:59.494Z'
+                                            lastChangeDate: '2020-10-09T00:56:59.494Z'
+                                            activationDate: '2020-10-09T00:56:59.494Z'
+                                        host: string
+                                        isActive: true
+                                        cancellationDate: '2020-10-09T00:56:59.494Z'
+                                        cancellationStatus:
+                                            id: 1
+                                            name: string
+                                            description: string
+                                            createdAt: '2020-10-09T00:56:59.494Z'
+                                            createdBy: string
+                                            updatedBy: 0
+                                            isRequireComment: true
+                                            isCancellation: true
+                                        originalPrice: 0
+                                        checkoutArticleParentLine: 0
+                                        isStandaloneCheckoutArticle: true
+
+            list:
+                method: 'GET'
+                path: 'orders'
+                controller: 'App\Core\Application\Action\Order\ListOrdersAction'
+                defaults:
+                    _api_receive: false
+                swagger_context:
+                    summary: "Get orders list"
+                    description: >
+                        # Get searchable order list!
+                    parameters:
+                        - name: page
+                          in: query
+                          type: number
+                          required: false
+                          example: >
+                              _1_
+                          description: Page number
+
+                        - name: limit
+                          in: query
+                          type: number
+                          required: false
+                          example: >
+                              _1_
+                          description: Items limit per page
+
+                        - name: filter
+                          in: query
+                          type: string
+                          required: false
+                          example: >
+                            _filter[0][property]=total&filter[0][expression]=gt&filter[0][value]=200_
+                          description: >
+                            Filter items
+                              - Property ---- ```filter[0][property]=total```
+                              - Value -------- ```filter[0][value]=200```
+                              - Expression - ```filter[0][expression]=gt```
+                                - Allowed expressions
+                                    - **eq** - equal
+                                    - **gt** - greater than
+                                    - **lt** - lower than
+                                    - **gte** - greater than or equal
+                                    - **lte** - lower than or equal
+                                    - **neq** - not equal
+                                    - **isNull** - is null
+                                    - **in** - in array
+                                    - **notIn** - not in array
+                                    - **contains** - contains
+                                    - **memberOf** - member of array
+                                    - **startsWith** - starts with
+                                    - **endsWith** - ends with
+
+                        - name: sort_by
+                          in: query
+                          type: string
+                          required: false
+                          example: >
+                            _-id,email,-total_
+                          description: >
+                            Sorting params.
+                             - Fields are separated with `,` character.
+                             - Fields are sorted **ascending** by default.
+                             - Character "**-**" before field name will change sorting direction to **descending**
+
+        itemOperations:
+            get:
+                method: 'GET'
+                path: 'order/{id}'
+                controller: 'App\Core\Application\Action\Order\GetOrderAction'
+                defaults:
+                    _api_receive: false
+            replace:
+                method: 'PUT'
+                path: 'order/{id}'
+                controller: 'App\Core\Application\Action\Order\CreateOrderAction'
+                defaults:
+                    _api_receive: false
+            update:
+                method: 'PATCH'
+                path: 'order/{id}'
+                controller: 'App\Core\Application\Action\Order\CreateOrderAction'
+                defaults:
+                    _api_receive: false
+            delete:
+                method: 'DELETE'
+                path: 'order/{id}'
+                controller: 'App\Core\Application\Action\Order\DeleteOrderAction'
+                defaults:
+                    _api_receive: false

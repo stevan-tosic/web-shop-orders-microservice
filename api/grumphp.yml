@@ -1,0 +1,118 @@
+parameters:
+    git_dir: ../
+    bin_dir: ./vendor/bin
+    stop_on_failure: false
+    process_timeout: null
+    ascii:
+        failed: docs/git/commit-message-failure.txt
+        succeeded: docs/git/commit-message-success.txt
+    testsuites:
+        phpmd:
+            tasks:
+              - phpmd
+    tasks:
+        phpcs:
+            standard: 'rulesets/phpcs.xml'
+            warning_severity: 0
+            ignore_patterns:
+                - "*/app/*"
+                - "*/bin/*"
+                - "*/var/cache/*"
+                - "*/vendor/*"
+                - "*/public/*"
+            whitelist_patterns:
+                - /^src\/(.*)/
+        securitychecker:
+            timeout: 30
+            run_always: false
+#        yamllint: ~
+        xmllint: ~
+        phplint: ~
+        git_conflict: ~
+        composer: ~
+        jsonlint: ~
+        phpversion:
+            project: '7.1'
+        git_commit_message:
+            allow_empty_message: false
+            max_subject_width: 999
+            enforce_capitalized_subject: false
+            enforce_no_subject_trailing_period: false
+            enforce_single_lined_subject: false
+            max_body_width: 999
+            case_insensitive: true
+            multiline: true
+        git_blacklist:
+            keywords:
+                - "die("
+                - "var_dump("
+                - "exit;"
+                - "dump("
+                - "console.log("
+                - "dd("
+            triggered_by: [php, js]
+        phpmd:
+            whitelist_patterns:
+                - /^src\/(.*)/
+            ruleset:
+                - rulesets/phpmd-ruleset.xml
+        phpstan:
+            autoload_file: ~
+            configuration: "./rulesets/phpstan.neon"
+            level: 7
+            triggered_by: ['php']
+            ignore_patterns: ["/tests/", "/config/", "/bin/", "/docker/", "/docs/", "/private/", "/public/", "/rulesets/", "/secrets/", "/templates/", "/translations/", "/var/", "/vendor/"]
+        phpcsfixer2:
+            config: rulesets/php_cs.php
+            cache_file: rulesets/.php_cs.cache
+            triggered_by: ['php']
+        phpcpd:
+            directory: '.'
+            exclude: ['vendor', 'var/cache', 'tests']
+            names_exclude: []
+            regexps_exclude: []
+            fuzzy: false
+            min_lines: 5
+            min_tokens: 70
+            triggered_by: ['php']
+        phpmnd:
+            directory: 'src'
+            whitelist_patterns: []
+            exclude: []
+            exclude_name: []
+            exclude_path: []
+            extensions: ['all']
+            hint: false
+            ignore_numbers: [0775, 0777, 0444, 60, 100, 300]
+            ignore_strings: []
+            strings: false
+            triggered_by: ['php']
+        file_size:
+            max_size: 3M
+            ignore_patterns: []
+#        psalm:
+#            config: 'rulesets/psalm.xml'
+#            ignore_patterns: []
+#            no_cache: false
+#            report: ~
+#            threads: 1
+#            triggered_by: ['php']
+#        phpparser:
+#            ignore_patterns:
+#                - "#AuditBundle/Services/AuditableEntityManager.php#"
+#            visitors:
+#                never_use_else: ~
+#                forbidden_class_method_calls:
+#                    blacklist:
+#                        - '$dumper->dump'
+#                forbidden_function_calls:
+#                    blacklist:
+#                        - 'var_dump'
+#                forbidden_static_method_calls:
+#                    blacklist:
+#                        - 'Dumper::dump'
+#        phan:
+#            config_file: 'rulesets/phan-config.php'
+#            output_mode: text
+#            output: null
+#            triggered_by: [php]

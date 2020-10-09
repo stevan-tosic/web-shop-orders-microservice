@@ -1,0 +1,28 @@
+#!/bin/sh
+
+GIT_USER=$(git config user.name)
+GIT_EMAIL=$(git config user.email)
+COMMIT_MSG_FILE=$1
+
+# Fetch the GIT diff and format it as command input:
+DIFF=$(git diff -r -p -m -M --full-index --staged | cat)
+
+# Run GrumPHP commit-msg check
+(cd "./api" && printf "%s\n" "${DIFF}" | exec 'bin/grumphp' 'git:commit-msg' "--git-user=$GIT_USER" "--git-email=$GIT_EMAIL" "$COMMIT_MSG_FILE") > /dev/null 2>&1 || (echo "grumphp commit message check failed" && exit 1)
+
+# Run GrumPHP
+(cd "./api" && composer code-check) > /dev/null 2>&1
+if [ $? != 0 ]; then echo "composer code-check failed" && exit 1; fi
+
+# Run npm lint && npm build
+if [ -x "$(command -v docker)" ] && [ "$(docker ps -a --filter "name=client" --filter status=running | wc -l)" = 2 ]; then
+  docker exec $(docker ps -aqf name=client) npm run lint > /dev/null 2>&1
+  if [ $? != 0 ]; then echo "npm run lint failed" && exit 1; fi
+  docker exec $(docker ps -aqf name=client) npm run client:build > /dev/null 2>&1
+  if [ $? != 0 ]; then echo "npm run client:build" && exit 1; fi
+else
+  (cd "./client" && npm run lint) > /dev/null 2>&1
+  if [ $? != 0 ]; then echo "npm run lint failed" && exit 1; fi
+  (cd "./client" && npm run client:build) > /dev/null 2>&1
+  if [ $? != 0 ]; then echo "npm run client:build" && exit 1; fi
+fi

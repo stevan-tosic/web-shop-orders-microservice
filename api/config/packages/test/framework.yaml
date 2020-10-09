@@ -1,0 +1,10 @@
+framework:
+    test: true
+    session:
+        handler_id: snc_redis.session.handler
+        cookie_lifetime: '%session_lifetime%'
+        gc_maxlifetime: 1800
+        name: '%eop_cookie_name%'
+        cookie_domain: '%env(APP_BASE_DOMAIN)%'
+        cookie_httponly: true
+        cookie_secure: true
