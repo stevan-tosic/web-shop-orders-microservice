@@ -20,9 +20,7 @@ Replace `${PROJECT_ROOT}` with the path to the project
   
 ## Project environment config file setup
    * This project has two environment config files
-   * Setup `client/.env` from `client/.env.dist` and `api/.env` from `api/.env.dist`.` 
-   * Make the following changes in `client/.env` file:
-       * MESSAGING_WEBSOCKET_URL=https://socket.elite.local
+   * Setup `api/.env` from `api/.env.dist`.` 
 
 ## Additional project setup (development) 
   * Overwrite contents of `.git/hooks/commit-msg` with contents from `api/docs/git/commit-msg`
@@ -30,15 +28,3 @@ Replace `${PROJECT_ROOT}` with the path to the project
 ### Docker setup
   * [Setup Docker](docker-setup.md)
 
-### WebSockets
-
-* Modify web-pack-dev-server settings in client/node_modules directory:
-  * (with *sudo* on linux if doesnt work) `sed -i  's/port: urlParts.port/port: 443/g'  client/node_modules/webpack-dev-server/client/index.js` (execute this command in project root directory)
-  * On MacOS change this file manually :
-      * File: 'client/node_modules/webpack-dev-server/client/index.js`
-      * Replace String *port: urlParts.port* with *port: 443* (Should be line *248*)
-* Enter the client container with `de-client` and run:
-  * `node faye.js 8000`
-  
-### Setup HAProxy
-  * [HAProxy](haproxy/HAPROXY_SETUP.md)
