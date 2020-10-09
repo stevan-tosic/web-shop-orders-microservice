@@ -1,0 +1,10 @@
+resources:
+  App\Core\Domain\Entity\Article\Article:
+    collectionOperations:
+    itemOperations:
+      get:
+        method: 'GET'
+        path: 'article/{id}'
+        controller: 'App\Core\Application\Action\Article\GetArticleAction'
+        defaults:
+          _api_receive: false

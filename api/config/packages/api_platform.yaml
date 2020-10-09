@@ -13,6 +13,7 @@ api_platform:
             - '%kernel.project_dir%/src/Core/Infrastructure/Routes/orderLine.yaml'
             - '%kernel.project_dir%/src/Core/Infrastructure/Routes/address.yaml'
             - '%kernel.project_dir%/src/Core/Infrastructure/Routes/host.yaml'
+            - '%kernel.project_dir%/src/Core/Infrastructure/Routes/article.yaml'
     formats:
         json:
             mime_types: [ 'application/json' ]

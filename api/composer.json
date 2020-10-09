@@ -154,6 +154,7 @@
 					"php bin/console security:check",
 					"php bin/console doctrine:cache:clear-metadata",
 					"php bin/console doctrine:schema:update --force --dump-sql",
+					"php bin/console doctrine:migrations:migrate --no-interaction --ansi",
 					"php bin/console assets:install",
 					"rm -rf var/cache",
 					"php -d memory_limit=-1 bin/console cache:clear --no-warmup --ansi",

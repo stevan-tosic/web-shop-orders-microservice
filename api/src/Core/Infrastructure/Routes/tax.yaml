@@ -1,0 +1,10 @@
+resources:
+  App\Core\Domain\Entity\Tax:
+    collectionOperations:
+    itemOperations:
+      get:
+        method: 'GET'
+        path: 'tax/{id}'
+        controller: 'App\Core\Application\Action\GetTaxAction'
+        defaults:
+          _api_receive: false

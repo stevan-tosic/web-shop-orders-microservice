@@ -42,7 +42,7 @@
 				<join-column name="host_id"/>
 			</join-columns>
 		</many-to-one>
-		<field name="isActive" type="boolean">
+		<field name="isActive" type="integer">
 			<options>
 				<option name="default">1</option>
 			</options>
@@ -52,6 +52,7 @@
 				<join-column name="cancellation_status_id"/>
 			</join-columns>
 		</many-to-one>
+		<field name="cancellationDate" column="cancellation_date" type="datetime" nullable="true"/>
 		<field name="originalPrice" column="original_price" type="float">
 			<options>
 				<option name="default">0</option>

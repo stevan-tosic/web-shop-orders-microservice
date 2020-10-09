@@ -16,13 +16,16 @@ class CancellationStatus
     /** @var string */
     private $description;
 
-    /** @var string */
+    /** @var \DateTime */
     private $createdAt;
 
-    /** @var string */
+    /** @var int */
     private $createdBy;
 
-    /** @var string */
+    /** @var \DateTime */
+    private $updatedAt;
+
+    /** @var int */
     private $updatedBy;
 
     /** @var bool */
@@ -72,25 +75,25 @@ class CancellationStatus
     }
 
     /**
-     * @return string
+     * @return \DateTime
      */
-    public function getCreatedAt(): string
+    public function getCreatedAt(): \DateTime
     {
         return $this->createdAt;
     }
 
     /**
-     * @param string $createdAt
+     * @param \DateTime $createdAt
      */
-    public function setCreatedAt(string $createdAt): void
+    public function setCreatedAt(\DateTime $createdAt): void
     {
         $this->createdAt = $createdAt;
     }
 
     /**
-     * @return string
+     * @return int
      */
-    public function getCreatedBy(): string
+    public function getCreatedBy(): int
     {
         return $this->createdBy;
     }
@@ -104,17 +107,17 @@ class CancellationStatus
     }
 
     /**
-     * @return string
+     * @return int
      */
-    public function getUpdatedBy(): string
+    public function getUpdatedBy(): int
     {
         return $this->updatedBy;
     }
 
     /**
-     * @param string $updatedBy
+     * @param int $updatedBy
      */
-    public function setUpdatedBy(string $updatedBy): void
+    public function setUpdatedBy(int $updatedBy): void
     {
         $this->updatedBy = $updatedBy;
     }
@@ -149,5 +152,21 @@ class CancellationStatus
     public function setIsCancellation(bool $isCancellation): void
     {
         $this->isCancellation = $isCancellation;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getUpdatedAt(): \DateTime
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @param \DateTime $updatedAt
+     */
+    public function setUpdatedAt(\DateTime $updatedAt): void
+    {
+        $this->updatedAt = $updatedAt;
     }
 }

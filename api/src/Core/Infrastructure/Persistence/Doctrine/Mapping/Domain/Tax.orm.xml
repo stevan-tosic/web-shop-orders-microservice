@@ -7,10 +7,10 @@
 		<id name="id" type="integer" column="id">
 			<generator strategy="IDENTITY"/>
 		</id>
-		<field name="name" column="name" length="20"/>
-		<field name="tax" type="float" column="tax" length="20"/>
+		<field name="name" column="name" length="50"/>
+		<field name="tax" type="float" column="tax"/>
 		<field name="typeId" type="integer" column="type_id"/>
 		<field name="expirationDate" column="expiration_date" type="datetime"/>
-		<field name="label" column="label"/>
+		<field name="label" column="label" length="55"/>
 	</entity>
 </doctrine-mapping>

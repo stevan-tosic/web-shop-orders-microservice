@@ -8,7 +8,7 @@
 			<generator strategy="IDENTITY"/>
 		</id>
 		<field name="name" length="100"/>
-		<field name="description" length="100"/>
+		<field name="description" length="100" nullable="true"/>
 		<field name="host" length="50"/>
 		<field name="shortName" column="short_name" length="50"/>
 		<many-to-one field="language" inversed-by="host" target-entity="App\Core\Domain\Entity\Language">

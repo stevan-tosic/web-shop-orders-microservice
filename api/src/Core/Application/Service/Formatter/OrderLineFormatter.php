@@ -44,7 +44,7 @@ class OrderLineFormatter extends BaseFormatter
             'relationship'                   => [
                 'tax'                 => $this->generateLink('api_addresses_get_item', $taxId),
                 'shipping_status'     => $this->generateLink('api_addresses_get_item', $shippingStatusId),
-                'article'             => $this->generateLink('api_addresses_get_item', $articleId),
+                'article'             => $this->generateLink('api_articles_get_item', $articleId),
                 'cancellation_status' => $this->generateLink('api_addresses_get_item', $cancellationStatusId),
                 'host'                => $this->generateLink('api_hosts_get_item', $hostId),
             ],

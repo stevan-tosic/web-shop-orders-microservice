@@ -23,9 +23,10 @@
 		<field name="location" length="150"/>
 		<many-to-one field="country" inversed-by="address" target-entity="App\Core\Domain\Entity\Country">
 			<join-columns>
-				<join-column name="title_id"/>
+				<join-column name="country_id"/>
 			</join-columns>
 		</many-to-one>
+		<field name="phone" nullable="true"/>
 		<field name="birthDate" column="birth_date" type="datetime"/>
 		<field name="registrationDate" column="registration_date" type="datetime">
 			<gedmo:timestampable on="create" />
