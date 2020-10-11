@@ -46,8 +46,7 @@ install:
 	yes | cp -rf api/.env.dist api/.env
 	yes | cp -rf api/public/.htaccess.dist api/public/.htaccess
 	@docker-compose up -d
-	timeout 60
-	@xdg-open http://localhost:12020/api
+	@timeout 60 xdg-open http://localhost:12020/api
 
 PHONY += ps
 ps:			## Docker containers process status
