@@ -14,8 +14,6 @@ use Doctrine\ORM\QueryBuilder;
  */
 class OrdersListQueryObject
 {
-    const PAGE_LIMIT = 10;
-
     /** @var EntityManagerInterface $entityManager */
     protected $entityManager;
 

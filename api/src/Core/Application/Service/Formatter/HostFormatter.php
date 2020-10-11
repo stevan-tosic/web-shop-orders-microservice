@@ -9,7 +9,6 @@ use App\Core\Domain\Entity\Host;
  */
 class HostFormatter
 {
-
     /**
      * @param Host $host
      *

@@ -28,7 +28,6 @@ class OrderLineFormatter extends BaseFormatter
     public function execute(OrderLine $orderLine): array
     {
         $taxId                = $orderLine->getTax() ? $orderLine->getTax()->getId() : null;
-        $shippingStatusId     = $orderLine->getShippingStatus() ? $orderLine->getShippingStatus()->getId() : null;
         $articleId            = $orderLine->getArticle() ? $orderLine->getArticle()->getId() : null;
         $cancellationStatusId = $orderLine->getCancellationStatus() ? $orderLine->getCancellationStatus()->getId(
         ) : null;
@@ -42,10 +41,12 @@ class OrderLineFormatter extends BaseFormatter
             'checkout_article_parent_line'   => null,
             'is_standalone_checkout_article' => $orderLine->getIsStandaloneCheckoutArticle(),
             'relationship'                   => [
-                'tax'                 => $this->generateLink('api_addresses_get_item', $taxId),
-                'shipping_status'     => $this->generateLink('api_addresses_get_item', $shippingStatusId),
+                'tax'                 => $this->generateLink('api_taxes_get_item', $taxId),
+                'shipping_status'     => $orderLine->getShippingStatus() ? [
+                    'name' => $orderLine->getShippingStatus()->getName(),
+                ] : null,
                 'article'             => $this->generateLink('api_articles_get_item', $articleId),
-                'cancellation_status' => $this->generateLink('api_addresses_get_item', $cancellationStatusId),
+                'cancellation_status' => $this->generateLink('api_cancellation_statuses_get_item', $cancellationStatusId),
                 'host'                => $this->generateLink('api_hosts_get_item', $hostId),
             ],
         ];

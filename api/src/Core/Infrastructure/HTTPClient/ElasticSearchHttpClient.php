@@ -20,9 +20,8 @@ class ElasticSearchHttpClient
      *
      * @param Client $client
      */
-    public function __construct(
-        Client $client
-    ) {
+    public function __construct(Client $client)
+    {
         $this->client = $client;
     }
 
@@ -69,7 +68,7 @@ class ElasticSearchHttpClient
         $appHost = \getenv('APP_HOST');
 
         if (!$entityType) {
-            return "{$appHost}-partner_details,{$appHost}-company_details";
+            return "{$appHost}-order_details";
         }
 
         return "{$appHost}-{$entityType}_details";

@@ -1,6 +1,12 @@
 ## Folders structure
   * `api/` - Symfony4 application - API
-       
+    
+## Project prerequisites
+  To be able to run project in docker container you will need to have following libraries installed:
+  - [docker](https://docs.docker.com/engine/install/)     
+  - [docker-compose](https://docs.docker.com/compose/install/)     
+  - makefile - If you do not have makefile installed on your system you will need to install it or to run setup manually by following [Installation instuctions (dev)](api/docs/installation-instuctions-development.md)
+
 ## Project setup
   Run ```make install``` command   
   or follow [Installation instuctions (dev)](api/docs/installation-instuctions-development.md)

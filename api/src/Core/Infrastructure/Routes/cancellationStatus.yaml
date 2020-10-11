@@ -1,5 +1,5 @@
 resources:
-  App\Core\Domain\Entity\CancelationStatus:
+  App\Core\Domain\Entity\CancellationStatus:
     collectionOperations:
     itemOperations:
       get:

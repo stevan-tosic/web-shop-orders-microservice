@@ -3,26 +3,12 @@
 namespace App\Core\Application\Service\Formatter;
 
 use App\Core\Domain\Entity\Address;
-use Symfony\Component\Routing\RouterInterface;
 
 /**
  * Class AddressFormatter
  */
 class AddressFormatter
 {
-    /** @var RouterInterface */
-    private $router;
-
-    /**
-     * AddressFormatter constructor.
-     *
-     * @param RouterInterface $router
-     */
-    public function __construct(RouterInterface $router)
-    {
-        $this->router = $router;
-    }
-
     /**
      * @param Address $address
      *

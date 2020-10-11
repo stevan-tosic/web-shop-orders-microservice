@@ -11,8 +11,6 @@ use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 /**
  * Class AbstractAction
  *
- * In time, actions should replace Controllers
- *
  * @SuppressWarnings(PHPMD.NumberOfChildren)
  */
 class AbstractAction

@@ -47,6 +47,7 @@
 				"doctrine/doctrine-migrations-bundle": "^3.0",
 				"doctrine/orm": "^2.7",
 				"gedmo/doctrine-extensions": "^3.0",
+				"guzzlehttp/guzzle": "^7.2",
 				"knplabs/knp-paginator-bundle": "^5.3",
 				"nelmio/cors-bundle": "^2.1",
 				"phpdocumentor/reflection-docblock": "^5.2",
