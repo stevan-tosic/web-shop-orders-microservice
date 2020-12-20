@@ -18,6 +18,7 @@
   * Code is structured in folders that mimic GUI sections that uses them.
   * Use Repository Interface instead of injecting Doctrine implementations.
   * Repositories should contain only basic methods (findById, findBy, save). For more complex queries use QueryObjects.
+  * More about used [code architecture](api/docs/architecture.md).
 
 #### Standards
   * [Symfony coding standards](http://symfony.com/doc/master/contributing/code/standards.html)
