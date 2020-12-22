@@ -51,7 +51,7 @@ class ListOrdersService
         $paginator  = $this->paginationService->paginate($ordersQuery, $page, $limit);
         $totalCount = $paginator->getTotalItemCount();
         $routeName  = 'api_orders_list_collection';
-        $totalPage  = (int)ceil($totalCount / $paginator->getItemNumberPerPage());
+        $totalPage  = (int) ceil($totalCount / $paginator->getItemNumberPerPage());
         $items      = $paginator->getItems();
         $result     = [
             'data' => [],
@@ -87,7 +87,7 @@ class ListOrdersService
                     'total_pages'  => $totalPage,
                     'total_count'  => $totalCount,
                 ],
-                'data'  => $this->formatter->execute((array)$items),
+                'data'  => $this->formatter->execute((array) $items),
             ];
         }
 
