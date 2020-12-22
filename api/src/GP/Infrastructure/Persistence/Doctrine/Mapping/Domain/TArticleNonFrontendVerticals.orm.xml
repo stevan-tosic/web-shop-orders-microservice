@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="App\GP\Domain\Entity\TArticleNonFrontendVerticals" table="t_article_non_frontend_verticals">
+    <unique-constraints>
+      <unique-constraint name="t_article_non_frontend_verticals_article_vertical_id_uindex" columns="article_vertical_id"/>
+    </unique-constraints>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="minimumPrice" type="float" column="minimum_price" precision="10" scale="0" nullable="true">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="percentPrice" type="float" column="percent_price" precision="10" scale="0" nullable="true">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="minimumPriceTill" type="float" column="minimum_price_till" precision="10" scale="0" nullable="true">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="billablePerLine" type="boolean" column="billable_per_line" nullable="true">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="noTransportCostsFrom" type="float" column="no_transport_costs_from" precision="10" scale="0" nullable="true"/>
+    <field name="minimumPriceLimit" type="float" column="minimum_price_limit" precision="10" scale="0" nullable="true">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="priceAfterLimit" type="float" column="price_after_limit" precision="10" scale="0" nullable="true">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="isMinimumPricePercent" type="boolean" column="is_minimum_price_percent" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="isPriceAfterLimitPercent" type="boolean" column="is_price_after_limit_percent" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <many-to-one field="articleVertical" target-entity="TArticleVerticals" fetch="LAZY">
+      <join-columns>
+        <join-column name="article_vertical_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

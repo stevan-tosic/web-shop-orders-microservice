@@ -27,3 +27,10 @@ doctrine:
                 is_bundle: false
                 prefix: App\Core\Domain\Entity
                 alias: Entity
+
+            App\GP\Domain\Entity:
+                type: xml
+                dir: '%kernel.project_dir%/src/GP/Infrastructure/Persistence/Doctrine/Mapping/Domain'
+                is_bundle: false
+                prefix: App\GP\Domain\Entity
+                alias: Entity

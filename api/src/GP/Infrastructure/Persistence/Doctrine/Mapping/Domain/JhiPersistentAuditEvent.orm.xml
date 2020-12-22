@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="App\GP\Domain\Entity\JhiPersistentAuditEvent" table="jhi_persistent_audit_event">
+
+    <id name="eventId" type="bigint" column="event_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="principal" type="string" column="principal" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="eventDate" type="datetime" column="event_date" nullable="true"/>
+    <field name="eventType" type="string" column="event_type" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

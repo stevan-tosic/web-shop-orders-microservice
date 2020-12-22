@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="App\GP\Domain\Entity\TDunningEvents" table="t_dunning_events">
+    <indexes>
+      <index name="billing_status_affected_id" columns="billing_status_affected_id"/>
+      <index name="order_id" columns="order_id"/>
+      <index name="step_id" columns="step_id"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="createdAt" type="datetime" column="created_at" nullable="true"/>
+    <many-to-one field="order" target-entity="TOrders" fetch="LAZY">
+      <join-columns>
+        <join-column name="order_id" referenced-column-name="ID"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="step" target-entity="TDunningSteps" fetch="LAZY">
+      <join-columns>
+        <join-column name="step_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="billingStatusAffected" target-entity="TBillingStatus" fetch="LAZY">
+      <join-columns>
+        <join-column name="billing_status_affected_id" referenced-column-name="ID"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="targetBillingStatus" target-entity="TBillingStatus" fetch="LAZY">
+      <join-columns>
+        <join-column name="target_billing_status_id" referenced-column-name="ID"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

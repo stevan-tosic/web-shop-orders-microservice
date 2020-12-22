@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="App\GP\Domain\Entity\TOnsitePromotionSchedules" table="t_onsite_promotion_schedules">
+
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="showOnMobile" type="boolean" column="show_on_mobile" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="showOnDesktop" type="boolean" column="show_on_desktop" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="startDate" type="datetime" column="start_date" nullable="true"/>
+    <field name="endDate" type="datetime" column="end_date" nullable="true"/>
+    <many-to-one field="promotion" target-entity="TOnsitePromotions" fetch="LAZY">
+      <join-columns>
+        <join-column name="promotion_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-many field="articleType" target-entity="TArticleType" inversed-by="schedule" fetch="LAZY">
+      <join-table name="t_onsite_promotion_schedule_article_type_map">
+        <join-columns>
+          <join-column name="schedule_id" referenced-column-name="id"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="article_type_id" referenced-column-name="ID"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+    <many-to-many field="dropshipper" target-entity="TDropshippingPartners" inversed-by="schedule" fetch="LAZY">
+      <join-table name="t_onsite_promotion_schedule_dropshipper_map">
+        <join-columns>
+          <join-column name="schedule_id" referenced-column-name="id"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="dropshipper_id" referenced-column-name="ID"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+  </entity>
+</doctrine-mapping>

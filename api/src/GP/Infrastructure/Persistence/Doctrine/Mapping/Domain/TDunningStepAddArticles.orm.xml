@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="App\GP\Domain\Entity\TDunningStepAddArticles" table="t_dunning_step_add_articles">
+    <indexes>
+      <index name="t_dunning_step_add_article_article_id" columns="article_id"/>
+      <index name="t_dunning_step_add_article_step_id" columns="step_id"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <many-to-one field="step" target-entity="TDunningSteps" fetch="LAZY">
+      <join-columns>
+        <join-column name="step_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="article" target-entity="TArticles" fetch="LAZY">
+      <join-columns>
+        <join-column name="article_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

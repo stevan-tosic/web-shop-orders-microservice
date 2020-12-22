@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="App\GP\Domain\Entity\TWidgets" table="t_widgets">
+    <indexes>
+      <index name="desktop_template_id_index" columns="desktop_template_id"/>
+      <index name="mobile_template_id_index" columns="mobile_template_id"/>
+      <index name="t_widgets_parent_id" columns="parent_id"/>
+      <index name="widget_page_version" columns="page_version_id"/>
+      <index name="widget_sub_type_id_index" columns="widget_sub_type_id"/>
+      <index name="widget_type_id_index" columns="widget_type_id"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="pageVersionId" type="integer" column="page_version_id" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="startDate" type="datetime" column="start_date" nullable="true"/>
+    <field name="endDate" type="datetime" column="end_date" nullable="true"/>
+    <field name="isDynamic" type="boolean" column="is_dynamic" nullable="true"/>
+    <field name="sortOrder" type="integer" column="sort_order" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="creationUserId" type="integer" column="creation_user_id" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="creationDate" type="datetime" column="creation_date" nullable="true"/>
+    <field name="lastChangeUserId" type="integer" column="last_change_user_id" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="lastChangeDate" type="datetime" column="last_change_date" nullable="true"/>
+    <field name="parentId" type="integer" column="parent_id" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="widgetTypeId" type="integer" column="widget_type_id" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="widgetTemplateId" type="integer" column="widget_template_id" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="widgetSubTypeId" type="integer" column="widget_sub_type_id" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="desktopTemplateId" type="integer" column="desktop_template_id" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="mobileTemplateId" type="integer" column="mobile_template_id" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="showOnDesktop" type="boolean" column="show_on_desktop" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="showOnMobile" type="boolean" column="show_on_mobile" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>
