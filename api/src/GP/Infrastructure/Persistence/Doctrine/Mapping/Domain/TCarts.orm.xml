@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="App\GP\Domain\Entity\TCarts" table="t_carts">
+  <entity name="App\GP\Domain\Entity\TCarts" table="carts">
     <indexes>
       <index name="OrderNumber" columns="order_number"/>
-      <index name="t_carts_new_billing_address_id_index" columns="billing_address_id"/>
-      <index name="t_carts_new_gpUserID_index" columns="gpUserID"/>
-      <index name="t_carts_new_host_id_index" columns="host_id"/>
-      <index name="t_carts_new_payment_type_index" columns="payment_type"/>
-      <index name="t_carts_new_shipping_address_id_index" columns="shipping_address_id"/>
+      <index name="carts_new_billing_address_id_index" columns="billing_address_id"/>
+      <index name="carts_new_gpUserID_index" columns="gpUserID"/>
+      <index name="carts_new_host_id_index" columns="host_id"/>
+      <index name="carts_new_payment_type_index" columns="payment_type"/>
+      <index name="carts_new_shipping_address_id_index" columns="shipping_address_id"/>
     </indexes>
     <unique-constraints>
       <unique-constraint name="unique_order_number_cart" columns="order_number"/>

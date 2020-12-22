@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="App\GP\Domain\Entity\TGeoStates" table="t_geo_states">
+  <entity name="App\GP\Domain\Entity\TGeoStates" table="geo_states">
     <indexes>
-      <index name="t_geo_states_t_geo_regions_id_fk" columns="region_id"/>
+      <index name="geo_states_t_geo_regions_id_fk" columns="region_id"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="App\GP\Domain\Entity\TArticleProducts" table="t_article_products">
+  <entity name="App\GP\Domain\Entity\TArticleProducts" table="article_products">
 
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
@@ -81,6 +81,7 @@
     </field>
     <field name="processingCosts" type="decimal" column="processing_costs" precision="10" scale="2" nullable="true"/>
     <field name="lastChangeDate" type="datetime" column="last_change_date" nullable="true"/>
+		<one-to-one field="article" target-entity="TArticles" inversed-by="articleProduct" />
     <many-to-one field="lastChangeUser" target-entity="TUsers" fetch="LAZY">
       <join-columns>
         <join-column name="last_change_user_id" referenced-column-name="id"/>

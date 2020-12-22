@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="App\GP\Domain\Entity\TArticleV1" table="t_article_v1">
+  <entity name="App\GP\Domain\Entity\TArticleV1" table="article_v1">
     <indexes>
       <index name="FK_t_article_t_article" columns="article_type_id"/>
     </indexes>

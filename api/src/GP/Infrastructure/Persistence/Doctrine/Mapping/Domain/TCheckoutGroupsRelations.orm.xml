@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="App\GP\Domain\Entity\TCheckoutGroupsRelations" table="t_checkout_groups_relations">
+  <entity name="App\GP\Domain\Entity\TCheckoutGroupsRelations" table="checkout_groups_relations">
 
     <unique-constraints>
       <unique-constraint name="checkout_group_id_host_id_article_type_id" columns="checkout_group_id,host_id,article_type_id"/>

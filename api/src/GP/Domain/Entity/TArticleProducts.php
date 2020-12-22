@@ -21,6 +21,8 @@ class TArticleProducts
      */
     private $id;
 
+    private $article;
+
     /**
      * @var string|null
      *

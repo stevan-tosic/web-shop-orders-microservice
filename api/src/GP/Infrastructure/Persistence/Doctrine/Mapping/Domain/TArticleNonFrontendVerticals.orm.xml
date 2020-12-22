@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="App\GP\Domain\Entity\TArticleNonFrontendVerticals" table="t_article_non_frontend_verticals">
+  <entity name="App\GP\Domain\Entity\TArticleNonFrontendVerticals" table="article_non_frontend_verticals">
     <unique-constraints>
-      <unique-constraint name="t_article_non_frontend_verticals_article_vertical_id_uindex" columns="article_vertical_id"/>
+      <unique-constraint name="article_non_frontend_verticals_article_vertical_id_uindex" columns="article_vertical_id"/>
     </unique-constraints>
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>

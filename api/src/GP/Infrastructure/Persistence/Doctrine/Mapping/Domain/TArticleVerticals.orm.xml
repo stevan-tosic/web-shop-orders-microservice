@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="App\GP\Domain\Entity\TArticleVerticals" table="t_article_verticals">
+  <entity name="App\GP\Domain\Entity\TArticleVerticals" table="article_verticals">
     <indexes>
       <index name="host_id_index" columns="host_id"/>
       <index name="title_index" columns="title"/>
-      <index name="t_article_verticals_slug_index" columns="slug"/>
-      <index name="t_article_verticals_slug_host_id_index" columns="slug,host_id"/>
-      <index name="t_article_verticals_article_product_vertical_id_index" columns="article_product_vertical_id"/>
-      <index name="t_article_verticals_article_experience_vertical_id_index" columns="article_experience_vertical_id"/>
-      <index name="t_article_verticals_article" columns="article_id"/>
+      <index name="article_verticals_slug_index" columns="slug"/>
+      <index name="article_verticals_slug_host_id_index" columns="slug,host_id"/>
+      <index name="article_verticals_article_product_vertical_id_index" columns="article_product_vertical_id"/>
+      <index name="article_verticals_article_experience_vertical_id_index" columns="article_experience_vertical_id"/>
+      <index name="article_verticals_article" columns="article_id"/>
       <index name="subtitle_index" columns="subtitle"/>
       <index name="article_reader_category_order" columns="popularity,first_activation_date"/>
       <index name="FK__t_article__last___167A2832" columns="last_change_user_id"/>

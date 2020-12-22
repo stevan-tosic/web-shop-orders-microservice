@@ -3,7 +3,7 @@
 	xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-	<entity name="App\Core\Domain\Entity\Tax" table="taxes">
+	<entity name="App\Core\Domain\Entity\Tax" table="task_taxes">
 		<id name="id" type="integer" column="id">
 			<generator strategy="IDENTITY"/>
 		</id>

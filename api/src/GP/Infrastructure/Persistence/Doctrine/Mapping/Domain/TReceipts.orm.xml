@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="App\GP\Domain\Entity\TReceipts" table="t_receipts">
+  <entity name="App\GP\Domain\Entity\TReceipts" table="receipts">
     <indexes>
       <index name="fk_receipts_receipt_accounts1_idx" columns="receipt_account_id"/>
       <index name="fk_receipts_receipt_type_idx" columns="receipt_type_id"/>

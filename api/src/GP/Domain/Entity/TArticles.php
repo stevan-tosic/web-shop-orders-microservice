@@ -21,21 +21,8 @@ class TArticles
      */
     private $id;
 
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="article_experience_id", type="integer", nullable=true)
-     */
-    private $articleExperienceId;
-
     private $articleExperience;
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="article_product_id", type="integer", nullable=true)
-     */
-    private $articleProductId;
+    private $articleProduct;
 
     /**
      * @var int|null

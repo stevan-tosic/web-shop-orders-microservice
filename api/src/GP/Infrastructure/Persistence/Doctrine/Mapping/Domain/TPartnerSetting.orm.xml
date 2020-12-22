@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="App\GP\Domain\Entity\TPartnerSetting" table="t_partner_setting">
+  <entity name="App\GP\Domain\Entity\TPartnerSetting" table="partner_setting">
     <indexes>
       <index name="fk_partner_setting_dropshipping_partner_id" columns="dropshipping_partner_id"/>
       <index name="fk_partner_setting_provider_id" columns="provider_id"/>

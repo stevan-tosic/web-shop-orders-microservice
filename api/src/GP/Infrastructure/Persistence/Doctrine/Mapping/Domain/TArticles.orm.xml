@@ -1,22 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="App\GP\Domain\Entity\TArticles" table="t_articles">
+  <entity name="App\GP\Domain\Entity\TArticles" table="articles">
     <indexes>
       <index name="FK__t_article__creat__11B57315" columns="creation_user_id"/>
       <index name="FK__t_article__last___12A9974E" columns="last_change_user_id"/>
-      <index name="t_articles_article_product_id_index" columns="article_product_id"/>
-      <index name="t_articles_article_type_id_index" columns="article_type_id"/>
-      <index name="t_articles_tax_id_index" columns="tax_id"/>
-      <index name="t_articles_variation_id_index" columns="variation_id"/>
+      <index name="articles_article_type_id_index" columns="article_type_id"/>
+      <index name="articles_tax_id_index" columns="tax_id"/>
+      <index name="articles_variation_id_index" columns="variation_id"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="articleProductId" type="integer" column="article_product_id" nullable="true">
-      <options>
-        <option name="unsigned"/>
-      </options>
-    </field>
     <field name="articleTypeId" type="integer" column="article_type_id" nullable="true">
       <options>
         <option name="unsigned"/>
@@ -60,8 +54,8 @@
         <option name="default">0</option>
       </options>
     </field>
-		<one-to-one field="articleExperience" target-entity="TArticleExperiences" mapped-by="articleExperience">
-		</one-to-one>
+		<one-to-one field="articleExperience" target-entity="TArticleExperiences" mapped-by="articleExperience"/>
+		<one-to-one field="articleProduct" target-entity="TArticleProducts" mapped-by="articleProducts"/>
     <many-to-one field="creationUser" target-entity="TUsers" fetch="LAZY">
       <join-columns>
         <join-column name="creation_user_id" referenced-column-name="id"/>
@@ -73,7 +67,7 @@
       </join-columns>
     </many-to-one>
     <many-to-many field="keyword" target-entity="TMetaKeywords" inversed-by="article" fetch="LAZY">
-      <join-table name="t_meta_keywords_to_articles_map">
+      <join-table name="meta_keywords_to_articles_map">
         <join-columns>
           <join-column name="article_id" referenced-column-name="id"/>
         </join-columns>

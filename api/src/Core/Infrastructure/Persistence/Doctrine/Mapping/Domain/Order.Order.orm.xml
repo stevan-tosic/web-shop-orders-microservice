@@ -4,7 +4,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:gedmo="http://gediminasm.org/schemas/orm/doctrine-extensions-mapping"
 	xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-	<entity name="App\Core\Domain\Entity\Order\Order" table="orders">
+	<entity name="App\Core\Domain\Entity\Order\Order" table="task_orders">
 		<id name="id" type="integer" column="id">
 			<generator strategy="IDENTITY"/>
 		</id>

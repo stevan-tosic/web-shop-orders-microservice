@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="App\GP\Domain\Entity\TOrderLinesAttributesOriginal" table="t_order_lines_attributes_original">
+  <entity name="App\GP\Domain\Entity\TOrderLinesAttributesOriginal" table="order_lines_attributes_original">
     <indexes>
       <index name="FK_t_order_lines_t_address" columns="redeemer_address_id"/>
       <index name="IX_t_order_lines" columns="orderID"/>

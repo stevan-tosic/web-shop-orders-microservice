@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="App\GP\Domain\Entity\TRetailoType" table="t_retailo_type">
+  <entity name="App\GP\Domain\Entity\TRetailoType" table="retailo_type">
     <indexes>
       <index name="FK_t_retailo_type_t_article" columns="article_id"/>
     </indexes>

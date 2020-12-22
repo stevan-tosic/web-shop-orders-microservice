@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="App\GP\Domain\Entity\TUserAcl" table="t_user_acl">
+  <entity name="App\GP\Domain\Entity\TUserAcl" table="user_acl">
     <indexes>
       <index name="FK__t_user_ac__creat__1F0F6E33" columns="creation_user_id"/>
       <index name="FK__t_user_ac__permi__1E1B49FA" columns="permission_id"/>

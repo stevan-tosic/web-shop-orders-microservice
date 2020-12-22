@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="App\GP\Domain\Entity\TLinklistsLinks" table="t_linklists_links">
+  <entity name="App\GP\Domain\Entity\TLinklistsLinks" table="linklists_links">
     <indexes>
       <index name="FK__t_linklis__linkl__22DFFF17" columns="linklist_id"/>
       <index name="FK__t_linklis__permi__21EBDADE" columns="permission_id"/>

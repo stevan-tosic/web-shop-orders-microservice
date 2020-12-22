@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="App\GP\Domain\Entity\TPermissions" table="t_permissions">
+  <entity name="App\GP\Domain\Entity\TPermissions" table="permissions">
     <indexes>
       <index name="FK__t_permiss__creat__2003926C" columns="creation_user_id"/>
     </indexes>
     <unique-constraints>
-      <unique-constraint name="t_permissions_name" columns="name"/>
+      <unique-constraint name="permissions_name" columns="name"/>
     </unique-constraints>
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>

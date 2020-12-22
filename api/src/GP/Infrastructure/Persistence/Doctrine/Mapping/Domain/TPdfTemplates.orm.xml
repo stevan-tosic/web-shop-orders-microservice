@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="App\GP\Domain\Entity\TPdfTemplates" table="t_pdf_templates">
+  <entity name="App\GP\Domain\Entity\TPdfTemplates" table="pdf_templates">
     <indexes>
-      <index name="t_pdf_templates_t_pdf_types_id_fk" columns="type_id"/>
+      <index name="pdf_templates_t_pdf_types_id_fk" columns="type_id"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>

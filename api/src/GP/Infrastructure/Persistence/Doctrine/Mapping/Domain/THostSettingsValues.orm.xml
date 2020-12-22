@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="App\GP\Domain\Entity\THostSettingsValues" table="t_host_settings_values">
+  <entity name="App\GP\Domain\Entity\THostSettingsValues" table="host_settings_values">
     <indexes>
       <index name="FK_t_host_settings_values_t_hosts" columns="host_id"/>
-      <index name="t_host_settings_values_ibfk_1host_setting_id" columns="host_setting_id"/>
+      <index name="host_settings_values_ibfk_1host_setting_id" columns="host_setting_id"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>

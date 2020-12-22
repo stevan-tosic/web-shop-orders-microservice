@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="App\GP\Domain\Entity\TIntakeLines" table="t_intake_lines">
+  <entity name="App\GP\Domain\Entity\TIntakeLines" table="intake_lines">
     <indexes>
       <index name="IX_t_intake_lines_intake_id" columns="intake_id"/>
       <index name="IX_t_intake_lines_product_id" columns="product_variation_id"/>
