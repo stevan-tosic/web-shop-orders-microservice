@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="App\GP\Domain\Entity\SimplemapSettingValues" table="simplemap_setting_values">
+    <indexes>
+      <index name="simplemap_setting_values_t_simplemap_region_id_fk" columns="region_id"/>
+      <index name="simplemap_setting_values_t_simplemap_settings_id_fk" columns="setting_id"/>
+      <index name="simplemap_setting_values_t_simplemap_states_id_fk" columns="state_id"/>
+      <index name="IDX_3881A2353C55F64" columns="map_id"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="simplemap_state_setting_values_map_id_uindex" columns="map_id,setting_id,state_id,region_id"/>
+    </unique-constraints>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="value" type="text" column="value" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="calculated" type="string" column="calculated" length="1024" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="map" target-entity="SimplemapMaps" fetch="LAZY">
+      <join-columns>
+        <join-column name="map_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="region" target-entity="GeoRegions" fetch="LAZY">
+      <join-columns>
+        <join-column name="region_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="setting" target-entity="SimplemapSettings" fetch="LAZY">
+      <join-columns>
+        <join-column name="setting_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="state" target-entity="SimplemapStates" fetch="LAZY">
+      <join-columns>
+        <join-column name="state_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

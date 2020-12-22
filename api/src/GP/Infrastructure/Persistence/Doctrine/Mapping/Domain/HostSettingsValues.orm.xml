@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="App\GP\Domain\Entity\HostSettingsValues" table="host_settings_values">
+    <indexes>
+      <index name="FK_t_host_settings_values_t_hosts" columns="host_id"/>
+      <index name="host_settings_values_ibfk_1host_setting_id" columns="host_setting_id"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="value" type="string" column="value" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="host" target-entity="Hosts" fetch="LAZY">
+      <join-columns>
+        <join-column name="host_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="hostSetting" target-entity="HostSettings" fetch="LAZY">
+      <join-columns>
+        <join-column name="host_setting_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

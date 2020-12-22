@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="App\GP\Domain\Entity\DropshippingPartners" table="dropshipping_partners">
+
+    <id name="id" type="integer" column="ID">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="name" type="string" column="name" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="canPrintBill" type="boolean" column="can_print_bill" nullable="true"/>
+    <field name="sendNotificationEmails" type="boolean" column="send_notification_emails" nullable="true"/>
+    <field name="notificationEmailAddress" type="string" column="notification_email_address" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="mailNotificationSubject" type="string" column="mail_notification_subject" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="orderTemplate" type="string" column="order_template" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default">default</option>
+      </options>
+    </field>
+    <field name="slipTemplate" type="string" column="slip_template" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default">gp_with_logo_address_left</option>
+      </options>
+    </field>
+    <field name="requiredTrackingNumber" type="boolean" column="required_tracking_number" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <many-to-one field="address" target-entity="Address" fetch="LAZY">
+      <join-columns>
+        <join-column name="address_id" referenced-column-name="ID"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-many field="user" target-entity="Users" mapped-by="partner" fetch="LAZY"/>
+    <many-to-many field="schedule" target-entity="OnsitePromotionSchedules" mapped-by="dropshipper" fetch="LAZY"/>
+  </entity>
+</doctrine-mapping>

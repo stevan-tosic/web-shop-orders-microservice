@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="App\GP\Domain\Entity\ArticleV1" table="article_v1">
+    <indexes>
+      <index name="FK_t_article_t_article" columns="article_type_id"/>
+    </indexes>
+    <id name="id" type="integer" column="ID">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="name0" type="string" column="name_0" length="150" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="name1" type="string" column="name_1" length="150" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="name2" type="string" column="name_2" length="150" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="productId" type="integer" column="product_id" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="isSoldOut" type="boolean" column="is_sold_out" nullable="true"/>
+    <field name="creationDate" type="datetime" column="creation_date" nullable="true"/>
+    <field name="creationUserId" type="integer" column="creation_user_id" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="lastChangeDate" type="datetime" column="last_change_date" nullable="true"/>
+    <field name="lastChangeUserId" type="integer" column="last_change_user_id" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="firstActivationDate0" type="datetime" column="first_activation_date_0" nullable="true"/>
+    <field name="firstActivationUserId0" type="integer" column="first_activation_user_id_0" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="firstActivationDate1" type="datetime" column="first_activation_date_1" nullable="true"/>
+    <field name="firstActivationUserId1" type="integer" column="first_activation_user_id_1" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="firstActivationDate2" type="datetime" column="first_activation_date_2" nullable="true"/>
+    <field name="firstActivationUserId2" type="integer" column="first_activation_user_id_2" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="lastActivationDate0" type="datetime" column="last_activation_date_0" nullable="true"/>
+    <field name="lastActivationUserId0" type="integer" column="last_activation_user_id_0" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="lastActivationDate1" type="datetime" column="last_activation_date_1" nullable="true"/>
+    <field name="lastActivationUserId1" type="integer" column="last_activation_user_id_1" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="lastActivationDate2" type="datetime" column="last_activation_date_2" nullable="true"/>
+    <field name="lastActivationUserId2" type="integer" column="last_activation_user_id_2" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="googleShoppingEnabled" type="boolean" column="google_shopping_enabled" nullable="true"/>
+    <field name="articleStatusId" type="integer" column="article_status_id" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <many-to-one field="articleType" target-entity="ArticleType" fetch="LAZY">
+      <join-columns>
+        <join-column name="article_type_id" referenced-column-name="ID"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

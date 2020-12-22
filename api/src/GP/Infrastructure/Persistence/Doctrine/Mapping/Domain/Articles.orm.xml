@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="App\GP\Domain\Entity\Articles" table="articles">
+    <indexes>
+      <index name="FK__t_article__creat__11B57315" columns="creation_user_id"/>
+      <index name="FK__t_article__last___12A9974E" columns="last_change_user_id"/>
+      <index name="articles_article_type_id_index" columns="article_type_id"/>
+      <index name="articles_tax_id_index" columns="tax_id"/>
+      <index name="articles_variation_id_index" columns="variation_id"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="articleTypeId" type="integer" column="article_type_id" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="productId" type="integer" column="product_id" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="taxId" type="integer" column="tax_id" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="useOrderTax" type="boolean" column="use_order_tax" nullable="true">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="creationDate" type="datetime" column="creation_date" nullable="true"/>
+    <field name="lastChangeDate" type="datetime" column="last_change_date" nullable="true"/>
+    <field name="variationId" type="integer" column="variation_id" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="totalRevenue" type="float" column="total_revenue" precision="10" scale="0" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="redeemedRevenue" type="float" column="redeemed_revenue" precision="10" scale="0" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="activationDate" type="datetime" column="activation_date" nullable="true"/>
+    <field name="choArticle" type="boolean" column="cho_article" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+		<one-to-one field="articleExperience" target-entity="ArticleExperiences" mapped-by="articleExperience"/>
+		<one-to-one field="articleProduct" target-entity="ArticleProducts" mapped-by="articleProducts"/>
+    <many-to-one field="creationUser" target-entity="Users" fetch="LAZY">
+      <join-columns>
+        <join-column name="creation_user_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="lastChangeUser" target-entity="Users" fetch="LAZY">
+      <join-columns>
+        <join-column name="last_change_user_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-many field="keyword" target-entity="MetaKeywords" inversed-by="article" fetch="LAZY">
+      <join-table name="meta_keywords_to_articles_map">
+        <join-columns>
+          <join-column name="article_id" referenced-column-name="id"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="keyword_id" referenced-column-name="id"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+  </entity>
+</doctrine-mapping>

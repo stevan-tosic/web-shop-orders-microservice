@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="App\GP\Domain\Entity\OrderLines" table="order_lines">
+    <indexes>
+      <index name="FK_order_line_checkout_article_parent_line_id" columns="checkout_article_parent_line_id"/>
+      <index name="FK_order_line_checkout_group_id" columns="checkout_group_id"/>
+      <index name="FK_t_order_lines_t_shipping_status" columns="shipping_status_id"/>
+      <index name="FK_t_order_lines_t_voucher_status" columns="voucher_status_id"/>
+      <index name="IX_article_host_date" columns="article_id,host_id,created_at"/>
+      <index name="main_order_line_id" columns="main_order_line_id"/>
+      <index name="order_lines_source_category_id_FK" columns="source_category_id"/>
+      <index name="order_lines_t_dropshipping_partners_id_fk_idx" columns="dropshipper_id"/>
+    </indexes>
+
+    <id name="id" type="integer" column="ID">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="gpuserid" type="string" column="gpUserID" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="productid" type="integer" column="productID" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="giftbox" type="integer" column="giftbox" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="receiver" type="string" column="receiver" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="code" type="string" column="code" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="price" type="float" column="price" precision="10" scale="0" nullable="true">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="commission" type="float" column="commission" precision="10" scale="0" nullable="true">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="product" type="integer" column="product" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="createdAt" type="datetime" column="created_at" nullable="true"/>
+    <field name="paiddate" type="datetime" column="paidDate" nullable="true"/>
+    <field name="terminationdate" type="datetime" column="terminationDate" nullable="true"/>
+    <field name="usagedate" type="datetime" column="usageDate" nullable="true"/>
+    <field name="paymentdate" type="datetime" column="paymentDate" nullable="true"/>
+    <field name="deliverydate" type="datetime" column="deliveryDate" nullable="true"/>
+    <field name="referenceprovider" type="text" column="referenceProvider" length="0" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="productVariationId" type="integer" column="product_variation_id" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="quantity" type="integer" column="quantity" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="acquisitionPrice" type="float" column="acquisition_price" precision="10" scale="0" nullable="true">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="taxid" type="integer" column="taxID" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="providersubid" type="integer" column="providerSubID" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="extend" type="integer" column="extend" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="articleId" type="integer" column="article_id" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="trackingCode" type="string" column="tracking_code" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="partnerStatusId" type="integer" column="partner_status_id" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="partnerNote" type="string" column="partner_note" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="hostId" type="integer" column="host_id" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="active" type="boolean" column="active" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="externalId" type="string" column="external_id" length="100" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="cancellationDate" type="datetime" column="cancellation_date" nullable="true"/>
+    <field name="cancellationStatusId" type="integer" column="cancellation_status_id" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="sourceCategoryTree" type="string" column="source_category_tree" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="isAdminAdded" type="boolean" column="is_admin_added" nullable="true">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="originalPrice" type="float" column="original_price" precision="10" scale="0" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="isStandaloneCheckoutArticle" type="boolean" column="is_standalone_checkout_article" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <many-to-one field="deliveryOption" target-entity="DeliveryOptions" fetch="LAZY">
+      <join-columns>
+        <join-column name="delivery_option_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="mainOrderLine" target-entity="OrderLines" fetch="LAZY">
+      <join-columns>
+        <join-column name="main_order_line_id" referenced-column-name="ID"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="checkoutArticleParentLine" target-entity="OrderLines" fetch="LAZY">
+      <join-columns>
+        <join-column name="checkout_article_parent_line_id" referenced-column-name="ID"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="checkoutGroup" target-entity="CheckoutGroups" fetch="LAZY">
+      <join-columns>
+        <join-column name="checkout_group_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="redeemerAddress" target-entity="Address" fetch="LAZY">
+      <join-columns>
+        <join-column name="redeemer_address_id" referenced-column-name="ID"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="shippingStatus" target-entity="ShippingStatus" fetch="LAZY">
+      <join-columns>
+        <join-column name="shipping_status_id" referenced-column-name="ID"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="voucherStatus" target-entity="VoucherStatus" fetch="LAZY">
+      <join-columns>
+        <join-column name="voucher_status_id" referenced-column-name="ID"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="sourceCategory" target-entity="CategoriesNew" fetch="LAZY">
+      <join-columns>
+        <join-column name="source_category_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="dropshipper" target-entity="DropshippingPartners" fetch="LAZY">
+      <join-columns>
+        <join-column name="dropshipper_id" referenced-column-name="ID"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="orderid" target-entity="Orders" fetch="LAZY">
+      <join-columns>
+        <join-column name="orderID" referenced-column-name="ID"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

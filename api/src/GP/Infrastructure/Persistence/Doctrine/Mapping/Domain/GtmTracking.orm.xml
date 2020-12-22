@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="App\GP\Domain\Entity\GtmTracking" table="gtm_tracking">
+    <indexes>
+      <index name="gtm_tracking_t_carts_number_fk" columns="order_number"/>
+      <index name="gtm_tracking_t_orders_ID_fk" columns="order_id"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="url" type="string" column="url" length="1024" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="event" type="string" column="event" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="createdAt" type="datetime" column="created_at" nullable="true"/>
+    <field name="data" type="text" column="data" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="orderNumber" target-entity="Carts" fetch="LAZY">
+      <join-columns>
+        <join-column name="order_number" referenced-column-name="order_number"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="order" target-entity="Orders" fetch="LAZY">
+      <join-columns>
+        <join-column name="order_id" referenced-column-name="ID"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

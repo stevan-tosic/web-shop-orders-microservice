@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="App\GP\Domain\Entity\PageVariationVersions" table="page_variation_versions">
+    <indexes>
+      <index name="version_name_index" columns="version_name"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="pageVariationId" type="integer" column="page_variation_id" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="versionName" type="string" column="version_name" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="versionNumber" type="integer" column="version_number" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="creationDate" type="datetime" column="creation_date" nullable="true"/>
+    <field name="creationUserId" type="integer" column="creation_user_id" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="lastChangeDate" type="datetime" column="last_change_date" nullable="true"/>
+    <field name="lastChangeUserId" type="integer" column="last_change_user_id" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="publicationUserId" type="integer" column="publication_user_id" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="publicationDate" type="datetime" column="publication_date" nullable="true"/>
+    <field name="metaTitle" type="string" column="meta_title" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="metaDescription" type="string" column="meta_description" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="layoutPath" type="string" column="layout_path" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="draftUserId" type="integer" column="draft_user_id" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="draftDate" type="datetime" column="draft_date" nullable="true"/>
+    <field name="layoutPathDesktop" type="string" column="layout_path_desktop" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">GPDefaultDesktop</option>
+      </options>
+    </field>
+    <field name="layoutPathMobile" type="string" column="layout_path_mobile" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">GPDefaultMobile</option>
+      </options>
+    </field>
+    <field name="layoutId" type="integer" column="layout_id" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="mobileSearchActive" type="boolean" column="mobile_search_active" nullable="true">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

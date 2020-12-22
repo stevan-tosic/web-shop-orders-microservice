@@ -5,7 +5,7 @@ namespace App\GP\Domain\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Tasks
+ * asks
  *
  * @ORM\Table(name="tasks")
  * @ORM\Entity
@@ -55,6 +55,5 @@ class Tasks
      * @ORM\Column(name="created_at", type="datetime", nullable=false, options={"default"="CURRENT_TIMESTAMP"})
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
-
 
 }

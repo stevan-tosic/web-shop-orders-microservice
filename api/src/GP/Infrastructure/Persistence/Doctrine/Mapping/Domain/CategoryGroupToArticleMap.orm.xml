@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="App\GP\Domain\Entity\CategoryGroupToArticleMap" table="category_group_to_article_map">
+    <indexes>
+      <index name="category_group_id" columns="category_group_id"/>
+      <index name="category_group_to_article_map_article_id_index" columns="article_id"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="hostGroupId" type="integer" column="host_group_id" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="sortOrder" type="integer" column="sort_order" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <many-to-one field="article" target-entity="Articles" fetch="LAZY">
+      <join-columns>
+        <join-column name="article_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="categoryGroup" target-entity="CategoryGroups" fetch="LAZY">
+      <join-columns>
+        <join-column name="category_group_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

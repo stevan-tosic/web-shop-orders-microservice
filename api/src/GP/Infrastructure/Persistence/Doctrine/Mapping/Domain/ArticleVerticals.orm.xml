@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="App\GP\Domain\Entity\ArticleVerticals" table="article_verticals">
+    <indexes>
+      <index name="host_id_index" columns="host_id"/>
+      <index name="title_index" columns="title"/>
+      <index name="article_verticals_slug_index" columns="slug"/>
+      <index name="article_verticals_slug_host_id_index" columns="slug,host_id"/>
+      <index name="article_verticals_article_product_vertical_id_index" columns="article_product_vertical_id"/>
+      <index name="article_verticals_article_experience_vertical_id_index" columns="article_experience_vertical_id"/>
+      <index name="article_verticals_article" columns="article_id"/>
+      <index name="subtitle_index" columns="subtitle"/>
+      <index name="article_reader_category_order" columns="popularity,first_activation_date"/>
+      <index name="FK__t_article__last___167A2832" columns="last_change_user_id"/>
+      <index name="FK__t_article__last___158603F9" columns="last_activation_user_id"/>
+      <index name="FK__t_article__first__1491DFC0" columns="first_activation_user_id"/>
+      <index name="FK__t_article__creat__139DBB87" columns="creation_user_id"/>
+      <index name="article_reader_category_where" columns="host_id,is_active,is_searchable,best_price"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="articleExperienceVerticalId" type="integer" column="article_experience_vertical_id" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="articleProductVerticalId" type="integer" column="article_product_vertical_id" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="articleId" type="integer" column="article_id" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="fallback" type="integer" column="fallback" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="hostId" type="integer" column="host_id" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="title" type="string" column="title" length="200" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="subtitle" type="string" column="subtitle" length="200" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="slug" type="string" column="slug" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="metaDescription" type="text" column="meta_description" length="0" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="descriptionLong" type="text" column="description_long" length="0" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="descriptionShort" type="text" column="description_short" length="0" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="isActive" type="boolean" column="is_active" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="popularity" type="integer" column="popularity" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="price" type="float" column="price" precision="10" scale="0" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="bestPrice" type="float" column="best_price" precision="10" scale="0" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="specialPrice" type="float" column="special_price" precision="10" scale="0" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="noindex" type="boolean" column="noindex" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="nofollow" type="boolean" column="nofollow" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="sitemap" type="boolean" column="sitemap" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="googleShoppingEnabled" type="boolean" column="google_shopping_enabled" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="firstActivationDate" type="datetime" column="first_activation_date" nullable="true"/>
+    <field name="lastActivationDate" type="datetime" column="last_activation_date" nullable="true"/>
+    <field name="creationDate" type="datetime" column="creation_date" nullable="true"/>
+    <field name="lastChangeDate" type="datetime" column="last_change_date" nullable="true"/>
+    <field name="isSearchable" type="boolean" column="is_searchable" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="isRecommendable" type="boolean" column="is_recommendable" nullable="true">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="popularityManual" type="integer" column="popularity_manual" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="popularityAuto" type="integer" column="popularity_auto" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="popularityFrom" type="datetime" column="popularity_from" nullable="true"/>
+    <field name="popularityTo" type="datetime" column="popularity_to" nullable="true"/>
+    <field name="siroopEnabled" type="boolean" column="siroop_enabled" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="minimumPrice" type="float" column="minimum_price" precision="10" scale="0" nullable="true">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="percentPrice" type="float" column="percent_price" precision="10" scale="0" nullable="true"/>
+    <field name="minimumPriceTill" type="float" column="minimum_price_till" precision="10" scale="0" nullable="true">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="erpNumber" type="integer" column="erp_number" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="choVertical" type="boolean" column="cho_vertical" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="allowChoGroups" type="boolean" column="allow_cho_groups" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <many-to-one field="creationUser" target-entity="Users" fetch="LAZY">
+      <join-columns>
+        <join-column name="creation_user_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="firstActivationUser" target-entity="Users" fetch="LAZY">
+      <join-columns>
+        <join-column name="first_activation_user_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="lastActivationUser" target-entity="Users" fetch="LAZY">
+      <join-columns>
+        <join-column name="last_activation_user_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="lastChangeUser" target-entity="Users" fetch="LAZY">
+      <join-columns>
+        <join-column name="last_change_user_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

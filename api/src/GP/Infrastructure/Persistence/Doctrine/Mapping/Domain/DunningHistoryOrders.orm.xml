@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="App\GP\Domain\Entity\DunningHistoryOrders" table="dunning_history_orders">
+    <indexes>
+      <index name="dunning_history_orders_dunning_Id_idx" columns="dunning_id"/>
+      <index name="dunning_history_orders_order_id_idx" columns="order_id"/>
+      <index name="dunning_history_orders_status_id_idx" columns="new_status_id"/>
+      <index name="dunning_history_orders_t_correspondence_types_id_fk" columns="correspondence_type_id"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="dunningStepId" type="integer" column="dunning_step_id" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="isSkipped" type="boolean" column="is_skipped" nullable="true">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="hasError" type="boolean" column="has_error" nullable="true">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <many-to-one field="dunning" target-entity="DunningHistory" fetch="LAZY">
+      <join-columns>
+        <join-column name="dunning_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="order" target-entity="Orders" fetch="LAZY">
+      <join-columns>
+        <join-column name="order_id" referenced-column-name="ID"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="newStatus" target-entity="BillingStatus" fetch="LAZY">
+      <join-columns>
+        <join-column name="new_status_id" referenced-column-name="ID"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="correspondenceType" target-entity="CorrespondenceTypes" fetch="LAZY">
+      <join-columns>
+        <join-column name="correspondence_type_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

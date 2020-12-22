@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="App\GP\Domain\Entity\ArticleType" table="article_type">
+    <id name="id" type="integer" column="ID">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="short" type="string" column="short" length="8" nullable="true">
+      <options>
+        <option name="fixed">1</option>
+      </options>
+    </field>
+    <field name="title0" type="string" column="title_0" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="title1" type="string" column="title_1" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="title2" type="string" column="title_2" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="defaultShippingStatus" type="integer" column="default_shipping_status" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="printingBill" type="boolean" column="printing_bill" nullable="true"/>
+    <field name="sortOrder" type="integer" column="sort_order" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">1111</option>
+      </options>
+    </field>
+    <field name="choEnabled" type="boolean" column="cho_enabled" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <many-to-one field="group" target-entity="ArticleTypeGroup" fetch="LAZY">
+      <join-columns>
+        <join-column name="group_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-many field="schedule" target-entity="OnsitePromotionSchedules" mapped-by="articleType" fetch="LAZY"/>
+  </entity>
+</doctrine-mapping>

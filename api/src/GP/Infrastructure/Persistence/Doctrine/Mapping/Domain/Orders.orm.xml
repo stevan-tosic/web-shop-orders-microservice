@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="App\GP\Domain\Entity\Orders" table="orders">
+    <indexes>
+      <index name="Billing_Address" columns="billing_address_id"/>
+      <index name="Delivery_Address" columns="delivery_address_id"/>
+      <index name="FK_t_orders_t_billing_status" columns="billing_status_id"/>
+      <index name="FK_t_orders_t_users_idx" columns="user_id"/>
+      <index name="FK_t_orders_type_idx" columns="type_id"/>
+      <index name="FL_t_orders_t_api_accounts" columns="api_account_id"/>
+      <index name="orders_active" columns="active"/>
+    </indexes>
+    <id name="id" type="integer" column="ID">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="zahlungsart" type="integer" column="zahlungsart" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="comment" type="text" column="comment" length="0" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="gutschrift" type="float" column="gutschrift" precision="10" scale="0" nullable="true">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="total" type="float" column="total" precision="10" scale="0" nullable="true">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="gpuserid" type="string" column="gpUserID" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="datatransupptransactionid" type="string" column="datatransUppTransactionId" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="datatransauthorizationcode" type="string" column="datatransAuthorizationCode" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="datatransresponsemessage" type="string" column="datatransResponseMessage" length="200" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="datatransamount" type="float" column="datatransAmount" precision="10" scale="0" nullable="true"/>
+    <field name="datatransstatus" type="string" column="datatransStatus" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="active" type="boolean" column="active" nullable="true">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="createdAt" type="datetime" column="created_at" nullable="true"/>
+    <field name="weight" type="float" column="weight" precision="10" scale="0" nullable="true">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="intrumResponse" type="integer" column="intrum_response" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="dunningDate1" type="datetime" column="dunning_date_1" nullable="true"/>
+    <field name="dunningDate2" type="datetime" column="dunning_date_2" nullable="true"/>
+    <field name="dunningDate3" type="datetime" column="dunning_date_3" nullable="true"/>
+    <field name="dunningOff" type="boolean" column="dunning_off" nullable="true">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="tracking" type="text" column="tracking" length="0" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="sageErp" type="datetime" column="sage_erp" nullable="true"/>
+    <field name="correspondenceTypeId" type="integer" column="correspondence_type_id" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">2</option>
+      </options>
+    </field>
+    <field name="portoMwst" type="integer" column="porto_mwst" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="hostId" type="integer" column="host_id" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="isShown" type="integer" column="is_shown" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="mobile" type="integer" column="mobile" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="orderNumber" type="string" column="order_number" length="32" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="ipAddress" type="string" column="ip_address" length="250" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="browser" type="string" column="browser" length="500" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="billingDate" type="datetime" column="billing_date" nullable="true"/>
+    <field name="dunningDate4" type="datetime" column="dunning_date_4" nullable="true"/>
+    <field name="externalId" type="string" column="external_id" length="100" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="cancellationDate" type="datetime" column="cancellation_date" nullable="true"/>
+    <field name="gtmSent" type="boolean" column="gtm_sent" nullable="true">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <many-to-one field="type" target-entity="OrderTypes" fetch="LAZY">
+      <join-columns>
+        <join-column name="type_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="billingAddress" target-entity="Address" fetch="LAZY">
+      <join-columns>
+        <join-column name="billing_address_id" referenced-column-name="ID"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="deliveryAddress" target-entity="Address" fetch="LAZY">
+      <join-columns>
+        <join-column name="delivery_address_id" referenced-column-name="ID"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="billingStatus" target-entity="BillingStatus" fetch="LAZY">
+      <join-columns>
+        <join-column name="billing_status_id" referenced-column-name="ID"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="user" target-entity="Users" fetch="LAZY">
+      <join-columns>
+        <join-column name="user_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="apiAccount" target-entity="ApiAccounts" fetch="LAZY">
+      <join-columns>
+        <join-column name="api_account_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>
