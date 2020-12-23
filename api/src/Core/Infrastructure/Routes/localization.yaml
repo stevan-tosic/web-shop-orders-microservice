@@ -1,0 +1,15 @@
+resources:
+    App\Core\Application\Action\Localization:
+        itemOperations: []
+        collectionOperations:
+            get:
+                method: 'GET'
+                path: 'localization/messages'
+                controller: 'App\Core\Application\Action\Localization\GetMessages'
+                defaults:
+                    _api_receive: false
+                swagger_context:
+                    summary: "Get localization messages"
+                    description: "Get all localization messages"
+                    requestBody: ''
+                    parameters: ''

@@ -61,6 +61,23 @@ services:
     networks:
       - default
 
+  # https://hub.docker.com/_/node/ - custom npm build
+  client:
+    container_name: client
+    build:
+      context: ./client
+      cache_from:
+        - ./client
+    volumes:
+      - ./client:/usr/src/client:rw
+    links:
+      - api
+    ports:
+      - "12010:12010"
+      - "8000:8000"
+    networks:
+      - default
+
   # https://hub.docker.com/_/redis/
   redis-client:
     image: redis:alpine

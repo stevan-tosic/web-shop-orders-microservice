@@ -29,6 +29,8 @@ function de-api() { docker exec -it $(docker ps -aqf "name=php") /bin/sh; }
 
 # View api logs
 function dl-api() { docker-compose logs -f | grep 'php'; }
+# View client logs
+function dl-client() { docker-compose logs -f | grep 'client'; }
 
 # Rebuild api
 function dr-api() { docker-compose up -d --build --force-recreate --no-deps php-platform; }

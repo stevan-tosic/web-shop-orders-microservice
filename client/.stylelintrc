@@ -1,0 +1,21 @@
+{
+  "processors": ["stylelint-processor-styled-components"],
+  "extends": [
+    "stylelint-config-recommended",
+    "stylelint-config-styled-components",
+    "stylelint-config-sass-guidelines"
+  ],
+  "plugins": [
+    "stylelint-scss"
+  ],
+  "rules": {
+    "scss/at-extend-no-missing-placeholder": true,
+    "order/properties-alphabetical-order": null,
+    "max-nesting-depth": 5,
+    "selector-max-compound-selectors": 4,
+    "selector-class-pattern": null,
+    "selector-no-qualifying-type": null,
+    "property-no-vendor-prefix": null,
+    "value-no-vendor-prefix": null
+  }
+}
