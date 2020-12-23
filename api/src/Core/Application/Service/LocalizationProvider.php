@@ -51,7 +51,7 @@ class LocalizationProvider
         $this->logger = $logger;
         $this->finder = $finder;
         $this->jsonFileLoader = $jsonFileLoader;
-        $this->localizationConfig = $parameterHandler->get('eop.languages');
+        $this->localizationConfig = $parameterHandler->get('languages');
 
         $this->setTranslationDir(self::TRANSLATION_DIR);
     }

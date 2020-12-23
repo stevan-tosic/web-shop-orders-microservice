@@ -15,7 +15,6 @@ import Footer from '../layouts/footer/Footer';
   localizationMessages: state.initInfo.localizationMessages,
   userData: state.initInfo.userInfo,
   logoutSuccess: state.initInfo.logoutSuccess,
-  onboardingUser: state.onboardingBasic.onboardingUser,
 }))
 class Router extends Component {
   static propTypes = {
@@ -25,7 +24,6 @@ class Router extends Component {
     localizationMessages: PropTypes.array,
     userData: PropTypes.object,
     logoutSuccess: PropTypes.bool,
-    onboardingUser: PropTypes.object,
     activeLanguage: PropTypes.string,
   };
 

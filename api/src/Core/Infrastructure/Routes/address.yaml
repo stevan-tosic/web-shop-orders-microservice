@@ -8,3 +8,14 @@ resources:
                 controller: 'App\Core\Application\Action\GetAddressAction'
                 defaults:
                     _api_receive: false
+            get_messages:
+                method: 'GET'
+                path: 'localization/messages'
+                controller: 'App\Core\Application\Action\Localization\GetMessagesAction'
+                defaults:
+                    _api_receive: false
+                swagger_context:
+                    summary: "Get localization messages"
+                    description: "Get all localization messages"
+                    requestBody: ''
+                    parameters: ''

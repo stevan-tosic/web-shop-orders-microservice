@@ -1,6 +1,10 @@
 parameters:
     eop_cookie_name: '__USRSESSIONID'
     app.project_dir: '%kernel.project_dir%'
+    languages:
+        default: 'de'
+        fallbackLanguage: 'en'
+        available: ['de', 'it', 'fr', 'en']
     session.storage.options:
         cache_limiter: 0
     order:
