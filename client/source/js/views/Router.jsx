@@ -76,6 +76,12 @@ class Router extends Component {
     const { match, localizationMessages } = this.props;
     const language = match.params.language;
 
+    const style = {
+      backgroundColor: 'red',
+      height: '500px',
+      width: '100%',
+    }
+
     return (
       <IntlProvider textComponent={ Fragment } locale={ language } messages={ localizationMessages[language] }>
         <div className='App'>
@@ -83,9 +89,10 @@ class Router extends Component {
             <html lang={ language } />
             <meta charSet='utf-8' />
             <title>Happy Shops</title>
+            <meta name="description" content="Happy Shops description" />
           </Helmet>
           <Header />
-          <div className='Page'>
+          <div className='Page' style={ style }>
             <PublicRoutes />
           </div>
           <Footer />
