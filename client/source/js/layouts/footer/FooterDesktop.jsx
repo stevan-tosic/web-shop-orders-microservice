@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import * as PropTypes from 'prop-types';
+import LanguageSelector from '../../components/dropdowns/LanguageSelector';
 import connect from 'react-redux/es/connect/connect';
 
 @withRouter
@@ -14,9 +15,12 @@ class FooterDesktop extends Component {
   };
 
   render() {
+    const { activeLanguage } = this.props;
+
     return (
       <footer className='desktop'>
         Footer Desktop
+        { activeLanguage && <LanguageSelector /> }
       </footer>
     );
   }

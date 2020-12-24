@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Redirect, withRouter } from 'react-router-dom';
-import { IntlProvider } from 'react-intl';
+import { IntlProvider, FormattedMessage, injectIntl } from 'react-intl';
 import * as PropTypes from 'prop-types';
 import connect from 'react-redux/es/connect/connect';
 import { Helmet } from 'react-helmet';
@@ -76,10 +76,12 @@ class Router extends Component {
     const { match, localizationMessages } = this.props;
     const language = match.params.language;
 
-    const style = {
-      backgroundColor: 'red',
-      height: '500px',
-      width: '100%',
+    if (['it', 'fr'].includes(language)) {
+      alert('page should redirect')
+    }
+
+    if (!language) {
+      return this.handleRedirect();
     }
 
     return (
@@ -88,11 +90,13 @@ class Router extends Component {
           <Helmet>
             <html lang={ language } />
             <meta charSet='utf-8' />
-            <title>Happy Shops</title>
+            <title>
+              { localizationMessages[language]['title'] }
+            </title>
             <meta name="description" content="Happy Shops description" />
           </Helmet>
           <Header />
-          <div className='Page' style={ style }>
+          <div className='Page'>
             <PublicRoutes />
           </div>
           <Footer />

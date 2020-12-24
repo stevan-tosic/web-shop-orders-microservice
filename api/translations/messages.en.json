@@ -1,4 +1,10 @@
 {
   "All": "All",
-  "create": "Create"
+  "create": "Create",
+  "lang_en": "English",
+  "lang_de": "Deutsch",
+  "lang_fr": "French",
+  "lang_it": "Italian",
+  "gift_search_placeholder": "Looking for gifts ...",
+  "title": "Happy Shops"
 }

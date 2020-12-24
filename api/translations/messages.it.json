@@ -1,4 +1,10 @@
 {
 	"All": "All",
-	"create": "Create"
+	"create": "Create",
+	"lang_en": "English - it",
+	"lang_de": "Deutsch - it",
+	"lang_fr": "French - it",
+	"lang_it": "Italian - it",
+	"gift_search_placeholder": "Alla ricerca di regali ...",
+	"title": "Geschenk Paradies - IT"
 }

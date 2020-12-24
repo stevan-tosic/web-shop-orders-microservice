@@ -1,5 +1,6 @@
 import 'babel-polyfill';
 import 'isomorphic-fetch';
+import 'global.scss';
 
 import { BrowserRouter } from 'react-router-dom';
 import { AppContainer } from 'react-hot-loader';
