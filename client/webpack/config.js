@@ -44,7 +44,6 @@ const plugins = [
     'process.env': {
       NODE_ENV: JSON.stringify(NODE_ENV),
       API_PATH: JSON.stringify(API_PATH),
-      APP_BASE_DOMAIN: JSON.stringify(APP_BASE_DOMAIN),
       ASSET_PATH: JSON.stringify(ASSET_PATH),
     },
   }),
