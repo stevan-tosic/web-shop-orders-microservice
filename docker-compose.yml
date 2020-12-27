@@ -111,6 +111,17 @@ services:
     networks:
       - default
 
+  rabbitmq:
+    image: rabbitmq:3.8-management-alpine
+    container_name: rabitmq-platform
+    env_file:
+      - ./api/.env
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - default
+
   # https://hub.docker.com/r/schickling/mailcatcher/
   mailcatcher:
     image: schickling/mailcatcher
@@ -124,7 +135,7 @@ networks:
     name: "test-network"
 
 volumes:
-  db-data: {}
-  pgadmin-data: {}
+  db-data: { }
+  pgadmin-data: { }
   esdata1:
     driver: local

@@ -21,27 +21,27 @@ rules:
   arrow-body-style: 0
   arrow-parens: 0
   class-methods-use-this: 0
-  comma-dangle: ["error", {
+  comma-dangle: [ "error", {
     "arrays": "always-multiline",
     "objects": "always-multiline",
     "imports": "always-multiline",
     "exports": "always-multiline",
     "functions": "never"
-  }]
+  } ]
   "jsx-a11y/label-has-for": [ 2, {
-      "components": [ "Label" ],
-      "required": {
-          "any": [ "nesting" ]
-      },
-      "allowChildren": true
-  }]
+    "components": [ "Label" ],
+    "required": {
+      "any": [ "nesting" ]
+    },
+    "allowChildren": true
+  } ]
   "jsx-a11y/label-has-associated-control": [ 2, {
     "components": [ "Label" ],
     "required": {
       "any": [ "nesting" ]
     },
     "allowChildren": true
-  }]
+  } ]
   "react/jsx-curly-brace-presence": 0
   react/no-danger: 0
   react/button-has-type: 0
@@ -51,8 +51,8 @@ rules:
   func-names: 0
   function-paren-newline: 0
   indent: 2
-  jsx-quotes: [2, "prefer-single"]
-  max-len: ["error", { "code": 120 }]
+  jsx-quotes: [ 2, "prefer-single" ]
+  max-len: [ "error", { "code": 120 } ]
   new-cap: 0
   no-plusplus: 0
   no-return-assign: 0
@@ -61,7 +61,7 @@ rules:
   no-alert: 2
   no-console: 2
   no-debugger: 2
-  template-curly-spacing: [2, "always"]
+  template-curly-spacing: [ 2, "always" ]
   # import rules
   import/extensions: 0
   import/no-extraneous-dependencies: 0
@@ -70,17 +70,17 @@ rules:
   # react rules
   react/forbid-prop-types: 0
   react/jsx-boolean-value: 0
-  react/jsx-curly-spacing: [2, "always"]
+  react/jsx-curly-spacing: [ 2, "always" ]
   react/jsx-filename-extension: 0
-  "react/prefer-stateless-function": [1, { "ignorePureComponents": true }]
+  "react/prefer-stateless-function": [ 1, { "ignorePureComponents": true } ]
   react/require-default-props: 0
 
   # Clean Code rules - Currently set as a WARNING
-  complexity: [1, 20]                                  # https://eslint.org/docs/rules/complexity
-  max-statements: [1, 20] # default is 10              # https://eslint.org/docs/rules/max-statements
-  max-statements-per-line: [2, { max: 1 }]             # https://eslint.org/docs/rules/max-statements-per-line
-  max-depth: [2, {max: 3}]                             # https://eslint.org/docs/rules/max-depth
-  max-lines: [2, 1060]                                 # https://eslint.org/docs/rules/max-lines
-  import/max-dependencies: [1, { max: 25 }]            # https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/max-dependencies.md
-  max-params: [2, { max: 5 }]                          # https://eslint.org/docs/rules/max-params
+  complexity: [ 1, 20 ]                                  # https://eslint.org/docs/rules/complexity
+  max-statements: [ 1, 20 ] # default is 10              # https://eslint.org/docs/rules/max-statements
+  max-statements-per-line: [ 2, { max: 1 } ]             # https://eslint.org/docs/rules/max-statements-per-line
+  max-depth: [ 2, { max: 3 } ]                           # https://eslint.org/docs/rules/max-depth
+  max-lines: [ 2, 1060 ]                                 # https://eslint.org/docs/rules/max-lines
+  import/max-dependencies: [ 1, { max: 25 } ]            # https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/max-dependencies.md
+  max-params: [ 2, { max: 5 } ]                          # https://eslint.org/docs/rules/max-params
 #  id-length: [2, { min: 3, exceptions: ["e", "id"] }] # https://eslint.org/docs/rules/id-length
